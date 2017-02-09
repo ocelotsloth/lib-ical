@@ -3,6 +3,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Build Status](https://travis-ci.org/srct/ical-generator.svg?branch=master)](https://travis-ci.org/srct/ical-generator)
 
+This is the SRCT fork of Sebbo2002's ical-generator
+
 ical-generator is a small piece of code which generates ical calendar files. I use this to generate subscriptionable
 calendar feeds.
 
