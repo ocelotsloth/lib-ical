@@ -7,7 +7,9 @@
     "url": "http://github.com/sebbo2002/ical-generator/issues",
     "email": "bugs@sebbo.net"
   },
-  "dependencies": {},
+  "dependencies": {
+    "moment-timezone": "^0.5.11"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.11.0",
