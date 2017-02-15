@@ -4,6 +4,8 @@
 [![CI Status](https://img.shields.io/travis/sebbo2002/ical-generator.svg?style=flat-square)](https://travis-ci.org/sebbo2002/ical-generator)
 <!-- [![Test Coverage](https://sebbo.helium.uberspace.de/teamcity-badges/ICalGenerator_UnitTests/coverage-istanbul)](https://ci.sebbo.net/project.html?projectId=ICalGenerator&tab=preport_project1_Test_Coverage&guest=1) -->
 
+This is the SRCT fork of Sebbo2002's ical-generator
+
 ical-generator is a small piece of code which generates ical calendar files. I use this to generate subscriptionable
 calendar feeds.
 
