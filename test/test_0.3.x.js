@@ -3,7 +3,7 @@ var assert = require('assert'),
     path = require('path'),
     fs = require('fs');
 
-describe('ical-generator 0.2.x / ICalCalendar', function() {
+describe('ical-generator 0.3.x / ICalCalendar', function() {
     'use strict';
 
     describe('ICalTools', function() {
