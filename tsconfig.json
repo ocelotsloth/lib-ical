@@ -1,11 +1,11 @@
 {
     "files": [
-        "src/**/*.ts",
+        "src/**/*.ts"
     ],
     "compilerOptions": {
         "module": "commonjs",
         "declaration": true,
         "noImplicitAny": true,
-        "target": "es5"
+        "target": "es2015"
     }
 }

@@ -116,6 +116,18 @@ breaks.
   - All other property values, unless otherwise stated, are **case-sensitive**.
 
 #### 3.1.1. List and Field Separators
+
+  - Properties which allow lists of values will have those values separated by
+  the **COMMA** character.
+
+  - There is no significance to the order of values in a list.
+
+  - For values specified in quoted-strings, each quoted-string should be
+  separated by a **COMMA** character.
+
+  - Some property values are defined in terms of multiple parts. Each value
+  **MUST** be separated by a **SEMICOLON** character.
+
 #### 3.1.2. Multiple Values
 #### 3.1.3. Binary Content
 #### 3.1.4. Character Set
