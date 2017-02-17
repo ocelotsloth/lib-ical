@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Node implementation of RFC 5545 generation and parsing",
   "main": "./dist/main.js",
+  "typings": "lib/index",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +15,15 @@
     "url": "git@git.gmu.edu:srct/lib-ics.git"
   },
   "author": "Mark Stenglein",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-tslint": "^7.1.0",
+    "gulp-typescript": "^3.1.5",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.6"
+  },
+  "dependencies": {
+    "@types/moment-timezone": "^0.2.34"
+  }
 }
