@@ -14,12 +14,12 @@ import { isAlpha } from "./util";
  */
 export class ContentLine {
     private _name: string;
-    private _param: string[];
+    private _params: string[] = [];
     private _value: string;
 
-    constructor(inName: string, inParam: string[], inValue: string) {
+    constructor(inName: string, inParams: string[], inValue: string) {
         this.name = inName;
-        this.param = inParam;
+        this._params = inParams;
         this.value = inValue;
     }
 
@@ -29,8 +29,8 @@ export class ContentLine {
         return this._name;
     }
 
-    get param(): string[] {
-        return this._param;
+    get params(): string[] {
+        return this._params;
     }
 
     get value(): string {
@@ -46,10 +46,6 @@ export class ContentLine {
         else {
             throw new TypeError("'name' must be alphabetic!");
         }
-    }
-
-    set param(newParam: string[]) {
-        this._param = newParam;
     }
 
     set value(newValue: string) {
@@ -77,7 +73,7 @@ export class ContentLine {
     public generate(): string {
         let outputLine = this.name;
 
-        this.param.forEach((param) => {
+        this.params.forEach((param) => {
             outputLine += ';';
             outputLine += param;
         });
