@@ -14,10 +14,10 @@ import { isAlpha } from "./util";
  */
 export class ContentLine {
     private _name: string;
-    private _param: string;
+    private _param: string[];
     private _value: string;
 
-    constructor(inName: string, inParam: string, inValue: string) {
+    constructor(inName: string, inParam: string[], inValue: string) {
         this.name = inName;
         this.param = inParam;
         this.value = inValue;
@@ -29,7 +29,7 @@ export class ContentLine {
         return this._name;
     }
 
-    get param(): string {
+    get param(): string[] {
         return this._param;
     }
 
@@ -48,7 +48,7 @@ export class ContentLine {
         }
     }
 
-    set param(newParam: string) {
+    set param(newParam: string[]) {
         this._param = newParam;
     }
 
@@ -56,5 +56,34 @@ export class ContentLine {
         if (isAlpha(newValue)) {
             this._value = newValue;
         }
+    }
+
+    /**
+     * Folds lines into 74 octet sections
+     * 
+     * @author Sebastian Pekarek <mail@sebbo.net>
+     * 
+     * TODO: Make sure that this handles multi-octed UTF-8 segments properly.
+     */
+    static fold(line: string): string {
+        return line.match(/(.{1,74})/g).join('\r\n ');
+    }
+
+    /**
+     * Generates a folded content line to use to create the final file.
+     * 
+     * @author Mark Stenglein <mark@stengle.in>
+     */
+    public generate(): string {
+        let outputLine = this.name;
+
+        this.param.forEach((param) => {
+            outputLine += ';';
+            outputLine += param;
+        });
+
+        outputLine += ':' + this.value + '\r\n';
+
+        return ContentLine.fold(outputLine);
     }
 }
