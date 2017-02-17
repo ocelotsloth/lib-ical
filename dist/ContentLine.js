@@ -1,5 +1,5 @@
-import { isAlpha } from "./util";
-
+"use strict";
+const util_1 = require("./util");
 /**
  * Implementation of a Content Line from RFC 5545
  *
@@ -12,49 +12,38 @@ import { isAlpha } from "./util";
  * while leaving the specific features required by individual component objects
  * unfilled.
  */
-export class ContentLine {
-    private _name: string;
-    private _param: string;
-    private _value: string;
-
-    constructor(inName: string, inParam: string, inValue: string) {
+class ContentLine {
+    constructor(inName, inParam, inValue) {
         this.name = inName;
         this.param = inParam;
         this.value = inValue;
     }
-
     /* Getters */
-
-    get name(): string {
+    get name() {
         return this._name;
     }
-
-    get param(): string {
+    get param() {
         return this._param;
     }
-
-    get value(): string {
+    get value() {
         return this._value;
     }
-
     /* Setters */
-
-    set name(newName: string) {
-        if (isAlpha(newName)) {
+    set name(newName) {
+        if (util_1.isAlpha(newName)) {
             this._name = newName;
         }
         else {
             throw new TypeError("'name' must be alphabetic!");
         }
     }
-
-    set param(newParam: string) {
+    set param(newParam) {
         this._param = newParam;
     }
-
-    set value(newValue: string) {
-        if (isAlpha(newValue)) {
+    set value(newValue) {
+        if (util_1.isAlpha(newValue)) {
             this._value = newValue;
         }
     }
 }
+exports.ContentLine = ContentLine;
