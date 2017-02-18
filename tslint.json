@@ -44,6 +44,7 @@
         ]
     },
     "rules": {
+        "prefer-const": true,
         "class-name": true,
         "comment-format": [
             true,

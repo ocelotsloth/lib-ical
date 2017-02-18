@@ -8,7 +8,8 @@
     "dist/"
   ],
   "scripts": {
-      "test": "mocha -r ts-node/register src/**/*.spec.ts"
+      "test": "mocha -r ts-node/register src/**/*.spec.ts",
+      "lint": "tslint -r tslint.json src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,6 @@
     "@types/moment-timezone": "^0.2.34",
     "@types/sinon": "^1.16.35",
     "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-tslint": "^7.1.0",
-    "gulp-typescript": "^3.1.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
     "ts-node": "^2.1.0",

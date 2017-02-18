@@ -16,43 +16,43 @@ describe("util", () => {
         });
 
         it("Should return false for numbers", () => {
-            let test = "12345";
-            let result = isAlpha(test);
+            const test = "12345";
+            const result = isAlpha(test);
 
             expect(result).to.be.false;
         });
 
         it("Should return false for alpha numerics", () => {
-            let test = "a2a";
-            let result = isAlpha(test);
+            const test = "a2a";
+            const result = isAlpha(test);
 
             expect(result).to.be.false;
         });
 
         it("Should return false for non-alpha numerics", () => {
-            let test = ".%3adsk)#";
-            let result = isAlpha(test);
+            const test = ".%3adsk)#";
+            const result = isAlpha(test);
 
             expect(result).to.be.false;
         });
 
         it("Should return true for lowercase alpha", () => {
-            let test = "abcdef";
-            let result = isAlpha(test);
+            const test = "abcdef";
+            const result = isAlpha(test);
 
             expect(result).to.be.true;
         });
 
         it("Should return true for uppercase alpha", () => {
-            let test = "ABCDEF";
-            let result = isAlpha(test);
+            const test = "ABCDEF";
+            const result = isAlpha(test);
 
             expect(result).to.be.true;
         });
 
         it("Should return true for mixed alpha", () => {
-            let test = "aBcDeF";
-            let result = isAlpha(test);
+            const test = "aBcDeF";
+            const result = isAlpha(test);
 
             expect(result).to.be.true;
         });

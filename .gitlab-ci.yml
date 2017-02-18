@@ -14,4 +14,3 @@ test_lib-ical:
     - npm install -g typescript ts-node gulp-cli
   script:
     - npm test
-    - gulp
