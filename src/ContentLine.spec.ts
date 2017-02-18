@@ -4,9 +4,13 @@ import "mocha";
 
 describe("ContentLine", () => {
     it("Should exist", () => {
-        let result = !ContentLine;
+        let result = true;
 
-        expect(result).to.be.false;
+        if (typeof ContentLine == undefined) {
+            result = false;
+        }
+
+        expect(result).to.be.true;
     })
 })
 
