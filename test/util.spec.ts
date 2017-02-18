@@ -6,13 +6,7 @@ describe("util", () => {
     describe("isAlpha", () => {
 
         it("Should exist", () => {
-            let result = true;
-
-            if (typeof isAlpha === undefined) {
-                result = false;
-            }
-
-            expect(result).to.be.true;
+            expect(isAlpha).to.exist;
         });
 
         it("Should return false for numbers", () => {

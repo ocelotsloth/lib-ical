@@ -3,14 +3,15 @@ import { isAlpha } from "./util";
 /**
  * Implementation of a Content Line from RFC 5545
  *
- * @author Mark Stenglein <mark@stengle.in>
- *
  * Chapter 3.1 defines the content line. This implementation will use it as an
  * abstract class which can be extended later by the specific content types.
  *
  * This class defines all of the general features specified by the chapter,
  * while leaving the specific features required by individual component objects
  * unfilled.
+ *
+ * @author Mark Stenglein <mark@stengle.in>
+ * @since 0.1.0
  */
 export default class ContentLine {
     private _name: string;
