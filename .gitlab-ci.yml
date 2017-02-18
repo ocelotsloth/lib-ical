@@ -8,4 +8,4 @@ test_async:
   stage: test
   script:
    - npm install
-   - node ./specs/start.js ./specs/async.spec.js
+   - node ./test/test_0.1.x.js ./test/test_0.2.x.js
