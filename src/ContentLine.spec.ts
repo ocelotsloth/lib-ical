@@ -12,5 +12,16 @@ describe("ContentLine", () => {
 
         expect(result).to.be.true;
     });
+
+    it("Should create an object", () => {
+        let test = new ContentLine('name', ['param'], 'value');
+        let result = true;
+
+        if (typeof test === undefined) {
+            result = false;
+        }
+
+        expect(result).to.be.true;
+    });
 });
 
