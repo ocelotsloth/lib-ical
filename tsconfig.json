@@ -2,8 +2,6 @@
     "files": [
         "src/ContentLine.ts",
         "src/util.ts",
-        "src/main.ts",
-        "src/greeter.ts"
     ],
     "compilerOptions": {
         "module": "commonjs",
