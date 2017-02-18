@@ -14,7 +14,7 @@ describe("ContentLine", () => {
     });
 
     it("Should create an object", () => {
-        let test = new ContentLine('name', ['param'], 'value');
+        let test = new ContentLine("name", ["param"], "value");
         let result = true;
 
         if (typeof test === undefined) {
