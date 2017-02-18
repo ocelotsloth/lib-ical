@@ -2,9 +2,11 @@ import ContentLine from "./ContentLine";
 import { expect } from "chai";
 import "mocha";
 
-describe("Hello", () => {
-    it("Should say hi", () => {
-        expect("hi").to.equal("hi");
-    });
-});
+describe("ContentLine", () => {
+    it("Should exist", () => {
+        let result = !ContentLine;
+
+        expect(result).to.be.false;
+    })
+})
 
