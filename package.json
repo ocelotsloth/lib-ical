@@ -17,6 +17,10 @@
   "author": "Mark Stenglein",
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.39",
+    "@types/moment-timezone": "^0.2.34"
+    "@types/sinon": "^1.16.35",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-tslint": "^7.1.0",
@@ -27,6 +31,5 @@
     "typescript": "^2.1.6"
   },
   "dependencies": {
-    "@types/moment-timezone": "^0.2.34"
   }
 }
