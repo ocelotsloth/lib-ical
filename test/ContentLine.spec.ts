@@ -64,7 +64,7 @@ describe("ContentLine", () => {
 
             expect(result).to.be.equal(testValue);
         });
-    });
+    }); /** describe("constructor") */
 
     /**
      * Test `fold` static method
@@ -107,11 +107,24 @@ describe("ContentLine", () => {
                 " longer than 10, being 74 characters long to be quite" +
                 " exact.\r\n This string is longer than 10, being 74" +
                 " characters long to be quite exact.";
-            
+
              const result: string = ContentLine.fold(test);
 
              expect(result).to.be.equal(expected);
-         })
+         });
+     }); /** describe("fold") */
 
-     });
-});
+     describe("generate", () => {
+         it("Should respond as non-static method", () => {
+             expect(ContentLine).respondsTo('generate');
+         });
+
+         it("Should generate properly formatted lines", () => {
+             const test: ContentLine = new ContentLine("NAME", ["param1", "param2"], "value");
+             const expected = "NAME;param1;param2:value"
+             const result = test.generate();
+
+             expect(result).to.be.equal(expected);
+         });
+     }); /** describe("generate") */
+}); /** describe("ContentLine") */
