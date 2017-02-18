@@ -1,0 +1,12 @@
+image: node:4.2.2
+cache:
+  paths:
+  - node_modules/
+stages:
+  - test
+test_async:
+  stage: test
+  script:
+   - npm install -g grunt
+   - npm install
+   - npm run test
