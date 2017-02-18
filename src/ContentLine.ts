@@ -12,7 +12,7 @@ import { isAlpha } from "./util";
  * while leaving the specific features required by individual component objects
  * unfilled.
  */
-export class ContentLine {
+export default class ContentLine {
     private _name: string;
     private _params: string[] = [];
     private _value: string;

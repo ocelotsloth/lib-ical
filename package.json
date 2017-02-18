@@ -8,7 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.39",
-    "@types/moment-timezone": "^0.2.34"
+    "@types/moment-timezone": "^0.2.34",
     "@types/sinon": "^1.16.35",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
@@ -27,9 +27,9 @@
     "gulp-typescript": "^3.1.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
+    "ts-node": "^2.1.0",
     "tslint": "^4.4.2",
     "typescript": "^2.1.6"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
