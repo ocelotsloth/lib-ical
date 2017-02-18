@@ -56,9 +56,9 @@ export class ContentLine {
 
     /**
      * Folds lines into 74 octet sections
-     * 
+     *
      * @author Sebastian Pekarek <mail@sebbo.net>
-     * 
+     *
      * TODO: Make sure that this handles multi-octed UTF-8 segments properly.
      */
     static fold(line: string): string {
@@ -67,7 +67,7 @@ export class ContentLine {
 
     /**
      * Generates a folded content line to use to create the final file.
-     * 
+     *
      * @author Mark Stenglein <mark@stengle.in>
      */
     public generate(): string {
