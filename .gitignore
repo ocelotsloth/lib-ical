@@ -4,3 +4,5 @@ logs
 
 # Dependency Directory
 node_modules
+
+.vscode/

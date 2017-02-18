@@ -62,7 +62,7 @@ export default class ContentLine {
      * TODO: Make sure that this handles multi-octed UTF-8 segments properly.
      */
     static fold(line: string): string {
-        return line.match(/(.{1,74})/g).join('\r\n ');
+        return line.match(/(.{1,74})/g).join("\r\n ");
     }
 
     /**
@@ -74,11 +74,11 @@ export default class ContentLine {
         let outputLine = this.name;
 
         this.params.forEach((param) => {
-            outputLine += ';';
+            outputLine += ";";
             outputLine += param;
         });
 
-        outputLine += ':' + this.value + '\r\n';
+        outputLine += ":" + this.value + "\r\n";
 
         return ContentLine.fold(outputLine);
     }

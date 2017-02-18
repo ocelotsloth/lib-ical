@@ -8,12 +8,12 @@ describe("util", () => {
         it("Should exist", () => {
             let result = true;
 
-            if (typeof isAlpha == undefined) {
+            if (typeof isAlpha === undefined) {
                 result = false;
             }
 
-            expect(result).to.be.true; 
-        })
+            expect(result).to.be.true;
+        });
 
         it("Should return false for numbers", () => {
             let test = "12345";
@@ -47,7 +47,7 @@ describe("util", () => {
             let test = "ABCDEF";
             let result = isAlpha(test);
 
-            expect(result).to.be.true
+            expect(result).to.be.true;
         });
 
         it("Should return true for mixed alpha", () => {

@@ -13,17 +13,18 @@ const util_1 = require("./util");
  * unfilled.
  */
 class ContentLine {
-    constructor(inName, inParam, inValue) {
+    constructor(inName, inParams, inValue) {
+        this._params = [];
         this.name = inName;
-        this.param = inParam;
+        this._params = inParams;
         this.value = inValue;
     }
     /* Getters */
     get name() {
         return this._name;
     }
-    get param() {
-        return this._param;
+    get params() {
+        return this._params;
     }
     get value() {
         return this._value;
@@ -37,13 +38,35 @@ class ContentLine {
             throw new TypeError("'name' must be alphabetic!");
         }
     }
-    set param(newParam) {
-        this._param = newParam;
-    }
     set value(newValue) {
         if (util_1.isAlpha(newValue)) {
             this._value = newValue;
         }
     }
+    /**
+     * Folds lines into 74 octet sections
+     *
+     * @author Sebastian Pekarek <mail@sebbo.net>
+     *
+     * TODO: Make sure that this handles multi-octed UTF-8 segments properly.
+     */
+    static fold(line) {
+        return line.match(/(.{1,74})/g).join("\r\n ");
+    }
+    /**
+     * Generates a folded content line to use to create the final file.
+     *
+     * @author Mark Stenglein <mark@stengle.in>
+     */
+    generate() {
+        let outputLine = this.name;
+        this.params.forEach((param) => {
+            outputLine += ";";
+            outputLine += param;
+        });
+        outputLine += ":" + this.value + "\r\n";
+        return ContentLine.fold(outputLine);
+    }
 }
-exports.ContentLine = ContentLine;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = ContentLine;

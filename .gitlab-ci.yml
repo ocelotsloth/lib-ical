@@ -1,0 +1,17 @@
+image: node-latest
+
+cache:
+  paths:
+    - node_modules/
+
+types:
+  - test
+
+test_lib-ical:
+  type: test
+  before_script:
+    - npm install
+    - npm install -g typescript ts-node gulp-cli
+  script:
+    - npm test
+    - gulp
