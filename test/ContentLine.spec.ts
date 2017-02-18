@@ -1,4 +1,4 @@
-import ContentLine from "./ContentLine";
+import ContentLine from "../src/ContentLine";
 import { expect } from "chai";
 import "mocha";
 

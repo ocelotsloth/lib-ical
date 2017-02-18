@@ -1,4 +1,4 @@
-import { isAlpha } from "./util";
+import { isAlpha } from "../src/util";
 import { expect } from "chai";
 import "mocha";
 
