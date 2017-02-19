@@ -1,4 +1,6 @@
-import { isAlpha } from "./util";
+import { isIamaToken, isAlpha } from "./util";
+import Parameter from "./Parameter";
+const CRLF: string = "/r/n"
 
 /**
  * Implementation of a Content Line from RFC 5545
@@ -15,10 +17,10 @@ import { isAlpha } from "./util";
  */
 export default class ContentLine {
     private _name: string;
-    private _params: string[] = [];
+    private _params: Parameter[] = [];
     private _value: string;
 
-    constructor(inName: string, inParams: string[], inValue: string) {
+    constructor(inName: string, inParams: Parameter[], inValue: string) {
         this.name = inName;
         this._params = inParams;
         this.value = inValue;
@@ -30,7 +32,7 @@ export default class ContentLine {
         return this._name;
     }
 
-    get params(): string[] {
+    get params(): Parameter[] {
         return this._params;
     }
 
@@ -41,7 +43,7 @@ export default class ContentLine {
     /* Setters */
 
     set name(newName: string) {
-        if (isAlpha(newName)) {
+        if (isIamaToken(newName)) {
             this._name = newName;
         }
         else {
@@ -63,7 +65,7 @@ export default class ContentLine {
      * TODO: Make sure that this handles multi-octed UTF-8 segments properly.
      */
     static fold(line: string): string {
-        return line.match(/(.{1,74})/g).join("\r\n ");
+        return line.match(/(.{1,74})/g).join(CRLF + " ");
     }
 
     /**
@@ -79,7 +81,7 @@ export default class ContentLine {
             outputLine += param;
         });
 
-        outputLine += ":" + this.value + "\r\n";
+        outputLine += ":" + this.value + CRLF;
 
         return ContentLine.fold(outputLine);
     }
