@@ -1,4 +1,5 @@
 import ContentLine from "../src/ContentLine";
+import Parameter from "../src/Parameter";
 import { expect } from "chai";
 import "mocha";
 
@@ -15,7 +16,8 @@ describe("ContentLine", () => {
      */
     describe("constructor", () => {
         it("Should create an object", () => {
-            const test: ContentLine = new ContentLine("name", ["param"], "value");
+            let param: Parameter = new Parameter("testParam", ["test1"]);
+            const test: ContentLine = new ContentLine("name", [param], "value");
             let result: boolean = true;
 
             if (typeof test === undefined) {
@@ -26,41 +28,46 @@ describe("ContentLine", () => {
         });
 
         it("Should have the same name as given on input", () => {
+            const param: Parameter = new Parameter("testParam", ["test1"]);
             const test: string = "name";
-            const testLine: ContentLine = new ContentLine(test, ["param"], "value");
+            const testLine: ContentLine = new ContentLine(test, [param], "value");
             const result: string = testLine.name;
 
             expect(result).to.be.equal(test);
         });
 
         it("Should have the same param as given on input", () => {
-            const testParam1: string[] = ["param1"];
+            const testParam1: Parameter[] = [new Parameter("testParam", ["test1"])];
             const testLine: ContentLine = new ContentLine("name", testParam1, "value");
-            const result: string[] = testLine.params;
+            const result: Parameter[] = testLine.params;
 
             expect(result).to.be.deep.equal(testParam1);
         });
 
         it("Should accept multiple param values on input", () => {
-            const testParams: string[] = ["param1", "param2"];
+            const param1: Parameter = new Parameter("param1", ["value1"]);
+            const param2: Parameter = new Parameter("param2", ["value2"]);
+            const testParams: Parameter[] = [param1, param2];
+
             const testLine: ContentLine = new ContentLine("name", testParams, "value");
-            const result: string[] = testLine.params;
+            const result: Parameter[] = testLine.params;
 
             expect(result).to.be.deep.equal(testParams);
         });
 
         it("Should accept no param values as input", () => {
-            const testParams: string[] = [];
+            const testParams: Parameter[] = [];
             const testLine: ContentLine = new ContentLine("name", testParams, "value");
-            const result: string[] = testLine.params;
+            const result: Parameter[] = testLine.params;
 
             expect(result).to.be.deep.equal(testParams);
         });
 
         it("Should have the same value as given on input", () => {
             const testValue: string = "testValue";
-            const testLine: ContentLine = new ContentLine("name", ["test"], testValue);
-            const result: string = testLine.value;
+            const testParam: Parameter = new Parameter("name", [testValue]);
+            const testLine: ContentLine = new ContentLine("name", [testParam], testValue);
+            const result: string = testLine.params[0].paramValues[0];
 
             expect(result).to.be.equal(testValue);
         });
@@ -116,12 +123,15 @@ describe("ContentLine", () => {
 
      describe("generate", () => {
          it("Should respond as non-static method", () => {
-             expect(ContentLine).respondsTo('generate');
+             expect(ContentLine).respondsTo("generate");
          });
 
          it("Should generate properly formatted lines", () => {
-             const test: ContentLine = new ContentLine("NAME", ["param1", "param2"], "value");
-             const expected = "NAME;param1;param2:value"
+             const param1: Parameter = new Parameter("PARAM-ONE", ["value1", "value2"])
+             const param2: Parameter = new Parameter("PARAM-TWO", ["value1"])
+             const params: Parameter[] = [param1, param2];
+             const test: ContentLine = new ContentLine("NAME", params, "value");
+             const expected = "NAME;PARAM-ONE=value1,value2;PARAM-TWO=value1:value";
              const result = test.generate();
 
              expect(result).to.be.equal(expected);
