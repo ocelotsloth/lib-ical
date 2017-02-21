@@ -1,7 +1,10 @@
-import { isIamaToken, isAlpha } from "./util";
+import { isAlpha } from "./util";
 import { ICalElement } from "./ICalElement";
 import Parameter from "./Parameter";
 const CRLF: string = "/r/n";
+function isIamaToken(input: string): boolean {
+    return true;
+}
 
 /**
  * Implementation of a Content Line from RFC 5545

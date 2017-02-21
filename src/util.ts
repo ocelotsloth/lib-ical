@@ -29,7 +29,7 @@ export function isAlpha(input: string): boolean {
  * @param input Input string to be tested
  * @returns boolean value of if it is a valid token
  */
-export function isIamaToken(input: string): boolean {
+export function isIanaToken(input: string): boolean {
     return /^[a-zA-Z0-9-]+$/.test(input);
 }
 
