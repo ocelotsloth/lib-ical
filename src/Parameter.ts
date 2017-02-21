@@ -91,18 +91,25 @@ export default class Parameter implements ICalElement {
      * @throws TypeError if any of the input values are not valid param-value's
      */
     set paramValues(newValues: string[]) {
+        let valid: boolean = true;
         newValues.forEach(newValue => {
             if (
-                !(Parameter.isParamText(newValue)) ||
-                !(Parameter.isQuotedString(newValue))
+                !((Parameter.isParamText(newValue)) ||
+                (Parameter.isQuotedString(newValue)))
             ) {
-                throw new TypeError(
-                    "param-value must either be valid paramtext or" +
-                    " quoted-string"
-                );
+                valid = false;
             }
         })
-        this._paramValues = newValues;
+
+        if (!valid) {
+            throw new TypeError(
+                "param-value must either be valid paramtext or" +
+                " quoted-string"
+            );
+        }
+        else {
+            this._paramValues = newValues;
+        }
     }
 
 
@@ -203,7 +210,7 @@ export default class Parameter implements ICalElement {
      * TODO: verify this regex
      */
     public static isSafeChar(testString: string): boolean {
-        return /[\s\x21\x23-\x2b\x2d-\x39\x3c-\x7e\x80-\xff]/.test(testString);
+        return /^[\s\x21\x23-\x2b\x2d-\x39\x3c-\x7e\x80-\xff]+$/.test(testString);
     }
 
 
@@ -219,7 +226,7 @@ export default class Parameter implements ICalElement {
      * @returns boolean If the input is a valid `quoted-string`
      */
     public static isQuotedString(test: string): boolean {
-        let result = false;
+        let result: boolean = false;
         if (
             test.charAt(0) === "\"" &&
             test.charAt(test.length - 1) === "\"" &&
@@ -246,6 +253,6 @@ export default class Parameter implements ICalElement {
      * TODO: verify this regex
      */
     public static isQSafeChar(test: string): boolean {
-        return /[\s\x21\x23-\x7e\x80-\xff]/.test(test);
+        return /^[\s\x21\x23-\x7e\x80-\xff]+$/.test(test);
     }
 }
