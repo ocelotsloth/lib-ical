@@ -106,17 +106,41 @@ describe("Parameter", () => {
             });
         });
 
-        describe("***paramValues", () => {
+        describe("paramValues", () => {
             it("Correctly sets paramtext values", () => {
+                const name: string = "TEST";
+                const values: string[] = ["value", "value2"];
+                const param: Parameter = new Parameter(name, values);
+                const result: string[] = param.paramValues;
 
+                expect(result).to.deep.equal(values);
             });
 
             it("Correctly sets quoted-string values", () => {
+                const name: string = "TEST";
+                const values: string[] = ["\"value\"", "\"value2\""];
+                const param: Parameter = new Parameter(name, values);
+                const result: string[] = param.paramValues;
 
+                expect(result).to.deep.equal(values);
+            });
+
+            it("Correctly sets mixed type values", () => {
+                const name: string = "TEST";
+                const values: string[] = ["value", "\"value2\""];
+                const param: Parameter = new Parameter(name, values);
+                const result: string[] = param.paramValues;
+
+                expect(result).to.deep.equal(values);
             });
 
             it("Throws an exception on malformed string", () => {
-
+                expect(() => {
+                    const name: string = "TEST";
+                    const values: string[] = ["V#\"!UE"];
+                    const param: Parameter = new Parameter(name, values);
+                }).to.throw("param-value must either be valid paramtext or" +
+                    " quoted-string");
             });
         });
     });
@@ -136,15 +160,28 @@ describe("Parameter", () => {
      */
     describe("***generate()", () => {
         it("Correctly generates single-valued parameters", () => {
+            const param: Parameter = new Parameter("NAME", ["value1"]);
+            const result: string = param.generate();
+            const expected: string = "NAME=value1";
 
+            expect(result).to.be.equal(expected);
         });
 
         it("Correctly generates double-valued parameters", () => {
+            const param: Parameter = new Parameter("NAME", ["value1", "value2"]);
+            const result: string = param.generate();
+            const expected: string = "NAME=value1,value2";
 
+            expect(result).to.be.equal(expected);
         });
 
         it("Correctly generates multi-valued parameters", () => {
+            const param: Parameter = new Parameter("NAME", [
+                "value1", "value2", "value3"]);
+            const result: string = param.generate();
+            const expected: string = "NAME=value1,value2,value3";
 
+            expect(result).to.be.equal(expected);
         });
     });
 
