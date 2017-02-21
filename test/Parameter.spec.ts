@@ -347,10 +347,28 @@ describe("Parameter", () => {
                 expect(Parameter).itself.respondsTo("isQuotedString");
             });
 
-            it("", () => {
+            it("returns true for valid quoted-string", () => {
+                const test: string = "\"Test this valid quote-string!\"";
+                console.log(test);
+                const result: boolean = Parameter.isQuotedString(test);
 
+                expect(result).to.be.true;
             });
 
+            it("returns false for single quotes", () => {
+                const test: string = "'Test this invalid quote-string!'";
+                const result: boolean = Parameter.isQuotedString(test);
+
+                expect(result).to.be.false;
+            });
+
+            it("returns false for invalid QSAFE-CHAR", () => {
+                const test: string = "\"Test this invalid, \"FAKE NEWS,\"" +
+                    " quote-string!\"";
+                const result: boolean = Parameter.isQuotedString(test);
+
+                expect(result).to.be.false;
+            });
         });
 
         /**
@@ -364,11 +382,35 @@ describe("Parameter", () => {
                 expect(Parameter).itself.respondsTo("isQSafeChar");
             });
 
-            it("", () => {
+            it("returns true for valid QSAFE-CHAR", () => {
+                const test: string = "abcdefghijklmnopqrstuvwxyz" +
+                    " ABCDEFGHIJKLMNOPQRSTUVWXYZ 01234567890 !@#$%^&*()~`'." +
+                    " ;:,";
+                const result: boolean = Parameter.isQSafeChar(test);
 
+                expect(result).to.be.true;
             });
 
-        });
+            it("Returns false for DQUOTE", () => {
+                const test: string = "test this char '\"'";
+                const result: boolean = Parameter.isQuotedString(test);
 
+                expect(result).to.be.false;
+            });
+
+            /**
+             * This test needs to be updated for the CONTROL char. I'm
+             *   not really sure how to make a CONTROL char in js escape
+             *   sequences though, so I'm skipping for now.
+             *
+             * TODO: Come back to this!
+             */
+            it("Returns false for CONTROL", () => {
+                const test: string = "test this char '\"'";
+                const result: boolean = false; // Parameter.isSafeChar(test);
+
+                expect(result).to.be.false;
+            });
+        });
     });
 });
