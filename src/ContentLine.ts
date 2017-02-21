@@ -1,10 +1,7 @@
 import { isAlpha } from "./util";
 import { ICalElement } from "./ICalElement";
 import Parameter from "./Parameter";
-const CRLF: string = "/r/n";
-function isIamaToken(input: string): boolean {
-    return true;
-}
+const CRLF: string = "\r\n";
 
 /**
  * Implementation of a Content Line from RFC 5545
@@ -47,7 +44,7 @@ export default class ContentLine implements ICalElement {
     /* Setters */
 
     set name(newName: string) {
-        if (isIamaToken(newName)) {
+        if (Parameter.isIanaToken(newName)) {
             this._name = newName;
         }
         else {
@@ -58,6 +55,9 @@ export default class ContentLine implements ICalElement {
     set value(newValue: string) {
         if (isAlpha(newValue)) {
             this._value = newValue;
+        }
+        else {
+            throw new TypeError("'value' must be alphabetic!");
         }
     }
 
@@ -82,7 +82,7 @@ export default class ContentLine implements ICalElement {
 
         this.params.forEach((param) => {
             outputLine += ";";
-            outputLine += param;
+            outputLine += param.generate();
         });
 
         outputLine += ":" + this.value + CRLF;

@@ -65,13 +65,13 @@ describe("ContentLine", () => {
 
         it("Should have the same value as given on input", () => {
             const testValue: string = "testValue";
-            const testParam: Parameter = new Parameter("name", [testValue]);
+            const testParam: Parameter = new Parameter("NAME", ["TEST"]);
             const testLine: ContentLine = new ContentLine("name", [testParam], testValue);
-            const result: string = testLine.params[0].paramValues[0];
+            const result: string = testLine.value;
 
             expect(result).to.be.equal(testValue);
         });
-    }); /** describe("constructor") */
+    }); /* describe("constructor") */
 
     /**
      * Test `fold` static method

@@ -26,8 +26,11 @@ describe("Parameter", () => {
             const testName: string = "TEST-NAME";
             const testParam: Parameter = new Parameter(testName, ["value1"]);
 
-            expect(testParam).to.have.property(
-                "paramName", "paramValues", "generate");
+            expect(testParam).to.have.property("_paramName");
+            expect(testParam).to.have.property("_paramValues");
+            expect(testParam).to.have.property("paramName");
+            expect(testParam).to.have.property("paramValues");
+            expect(testParam).to.have.property("generate");
         });
     });
 
@@ -99,12 +102,11 @@ describe("Parameter", () => {
                     const name: string = "!NVALID-N@ME";
                     const values: string[] = ["value"];
                     const testParam: Parameter = new Parameter(name, values);
-                }).to.throw("param-value must either be valid paramtext or" +
-                    " quoted-string");
+                }).to.throw("Parameter must be valid iana-token or x-name");
             });
         });
 
-        describe("paramValues", () => {
+        describe("***paramValues", () => {
             it("Correctly sets paramtext values", () => {
 
             });
@@ -132,7 +134,7 @@ describe("Parameter", () => {
      *   that the higher level classes can simply validate proper types and use
      *   the lower level generate method.
      */
-    describe("generate()", () => {
+    describe("***generate()", () => {
         it("Correctly generates single-valued parameters", () => {
 
         });
@@ -349,7 +351,6 @@ describe("Parameter", () => {
 
             it("returns true for valid quoted-string", () => {
                 const test: string = "\"Test this valid quote-string!\"";
-                console.log(test);
                 const result: boolean = Parameter.isQuotedString(test);
 
                 expect(result).to.be.true;

@@ -46,7 +46,7 @@ export default class Parameter implements ICalElement {
 
 
     get paramValues() {
-        return this.paramValues;
+        return this._paramValues;
     }
 
 
@@ -73,7 +73,7 @@ export default class Parameter implements ICalElement {
             this._paramName = newName;
         }
         else {
-            throw new TypeError("Parameter must be valid iama-token or x-token");
+            throw new TypeError("Parameter must be valid iana-token or x-name");
         }
     }
 
@@ -125,7 +125,7 @@ export default class Parameter implements ICalElement {
      * @returns string Representation of the Parameter as defined in RFC 5545
      */
     public generate(): string {
-        let outputString = this.paramName;
+        let outputString = this.paramName + "=";
         /**
          * Goes through each parameter value and adds it, being sure to place
          * the comma for the 2nd parameter onwards.
@@ -177,7 +177,10 @@ export default class Parameter implements ICalElement {
      * TODO: Implement this!
      */
     public static isXName(input: string): boolean {
-        return true;
+        if (!(input.substring(0,2) === "X-")) {
+            return false;
+        }
+        return /^[a-zA-Z0-9-]+$/.test(input);
     }
 
     /**
