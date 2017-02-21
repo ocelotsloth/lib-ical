@@ -1,6 +1,7 @@
 import { isIamaToken, isAlpha } from "./util";
+import { ICalElement } from "./ICalElement";
 import Parameter from "./Parameter";
-const CRLF: string = "/r/n"
+const CRLF: string = "/r/n";
 
 /**
  * Implementation of a Content Line from RFC 5545
@@ -15,9 +16,9 @@ const CRLF: string = "/r/n"
  * @author Mark Stenglein <mark@stengle.in>
  * @since 0.1.0
  */
-export default class ContentLine {
+export default class ContentLine implements ICalElement {
     private _name: string;
-    private _params: Parameter[] = [];
+    private _params: Parameter[];
     private _value: string;
 
     constructor(inName: string, inParams: Parameter[], inValue: string) {
