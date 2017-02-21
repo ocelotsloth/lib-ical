@@ -10,6 +10,12 @@ describe("Parameter", () => {
         expect(Parameter).to.exist;
     });
 
+    /*
+     * Note: it is not neccessary to test all of the behavior for the
+     * constructor as far as validation of input data is concerned. This is
+     * because the SET method for each property performs that function. Look
+     * there for tests.
+     */
     describe("constructor()", () => {
         it("Should create an object", () => {
             const result: Parameter = new Parameter("TestName", ["value"]);
@@ -25,6 +31,11 @@ describe("Parameter", () => {
         });
     });
 
+    /*
+     * All the GET methods are really doing is pulling the private data
+     *  variables out for the requester to see. Nothing too complex is happening
+     *  that needs to be tested.
+     */
     describe("GET Methods", () => {
         describe("paramName", () => {
             it("Should return the correct name", () => {
@@ -49,6 +60,22 @@ describe("Parameter", () => {
         });
     });
 
+    /*
+     * Note that the SET methods are difficult to directly test, as they are
+     *  called even by the constructor function when setting the values. Because
+     *  of that behavior, they can be tested directly by simply calling the
+     *  class constructors with the values you want to test.
+     *
+     * The constructor is really only going so far as to do this:
+     *
+     *     constructor(inName: string, inValues: string[]) {
+     *         this.paramName = inName;
+     *         this.paramValues = inValues;
+     *     }
+     *
+     * These tests implement the data validation that is missing from the
+     *  constructor level tests.
+     */
     describe("SET Methods", () => {
         describe("paramName", () => {
             it("Correctly sets iana-token names", () => {
@@ -79,6 +106,19 @@ describe("Parameter", () => {
         });
     });
 
+    /**
+     * Tests the generation of param strings to make sure they are to spec with
+     *   RFC 5545's ABNF definition (pg. 10):
+     *
+     *     param = param-name "=" param-value *("," param-value)
+     *     ; Each property defines the specific ABNF for the parameters
+     *     ; allowed on the property. Refer to specific properties for
+     *     ; precise parameter ABNF.
+     *
+     * tl;dr of the above snippet is that this is a basic structure check so
+     *   that the higher level classes can simply validate proper types and use
+     *   the lower level generate method.
+     */
     describe("generate()", () => {
         it("Correctly generates single-valued parameters", () => {
 
@@ -93,6 +133,12 @@ describe("Parameter", () => {
         });
     });
 
+    /**
+     * There are currently many more static methods then will be in the final
+     *   class. I need to start building the other objects before I will have a
+     *   better idea which of these validators are unique or need to be moved to
+     *   a general utility file.
+     */
     describe("STATIC Methods", () => {
         /**
          * iana-token definition from RFC 5545 (pg. 10)

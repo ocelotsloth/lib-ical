@@ -28,6 +28,7 @@ export default class Parameter implements ICalElement {
      *
      * @author Mark Stenglein
      * @since 0.1.0
+     * @access public
      * @param inName string The name of the new Parameter in iama-token / x-name
      * @param inValues string[] array of string values
      */
@@ -58,6 +59,7 @@ export default class Parameter implements ICalElement {
      *
      * @author Mark Stenglein <mark@stengle.in>
      * @since 0.1.0
+     * @access public
      * @param newName The new name to be tested and saved.
      * @returns void
      * @throws TypeError if newName is not a valid iCal name.
@@ -83,7 +85,10 @@ export default class Parameter implements ICalElement {
      *
      * @author Mark Stenglein <mark@stengle.in>
      * @since 0.1.0
+     * @access public
      * @param newValues The input values to be tested and saved.
+     * @returns void
+     * @throws TypeError if any of the input values are not valid param-value's
      */
     set paramValues(newValues: string[]) {
         newValues.forEach(newValue => {
@@ -109,6 +114,7 @@ export default class Parameter implements ICalElement {
      *
      * @author Mark Stenglein
      * @since 0.1.0
+     * @access public
      * @returns string Representation of the Parameter as defined in RFC 5545
      */
     public generate(): string {
