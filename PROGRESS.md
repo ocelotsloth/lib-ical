@@ -190,6 +190,24 @@ breaks.
   recognize.
 
 ### 3.2.1. Alternate Text Representation
+
+- Paremeter Name: `ALTREP`
+
+- Purpose: To specify an alternate text representation for the property value.
+
+- Format Definition: The property parameter is defined by the following
+notation:
+
+  - `altrepparam = "ALTREP" "=" DQUOTE uri DQUOTE`
+
+- Description: This parameter specifies a URI that points to an alternate
+representation for a textual property value.
+
+  - A property specifying this parameter MUST also include a value that
+  reflects the default representation of the text value.
+
+  - The URI parameter value MUST be specified in a quoted-string.
+
 ### 3.2.2. Common Name
 ### 3.2.3. Calendar User Type
 ### 3.2.4. Delegators
