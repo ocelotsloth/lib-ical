@@ -1,7 +1,8 @@
-.DS_Store
-/ical-generator.sublime-workspace
-/ical-generator.sublime-project
-/node_modules/
-/coverage/
+# Logs
+logs
+*.log
 
-/.idea/
+# Dependency Directory
+node_modules
+
+.vscode/

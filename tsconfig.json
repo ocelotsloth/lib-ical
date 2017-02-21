@@ -1,0 +1,12 @@
+{
+    "files": [
+        "src/ContentLine.ts",
+        "src/util.ts"
+    ],
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "noImplicitAny": true,
+        "target": "es2015"
+    }
+}

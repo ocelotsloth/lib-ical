@@ -1,12 +1,16 @@
-image: node:4.2.2
+image: node:latest
+
 cache:
   paths:
-  - node_modules/
-stages:
+    - node_modules/
+
+types:
   - test
-test_async:
-  stage: test
+
+test_lib-ical:
+  type: test
+  before_script:
+    - npm install
+    - npm install -g typescript ts-node gulp-cli
   script:
-   - npm install -g grunt
-   - npm install
-   - npm run test
+    - npm test
