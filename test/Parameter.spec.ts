@@ -94,6 +94,12 @@ describe("Parameter", () => {
     });
 
     describe("STATIC Methods", () => {
+        /**
+         * iana-token definition from RFC 5545 (pg. 10)
+         *
+         *     iana-token = 1*(ALPHA / DIGIT / "-")
+         *     ; iCalendar identifier registered with IANA
+         */
         describe("isIanaToken()", () => {
             it("exists", () => {
                 expect(Parameter).itself.respondsTo("isIanaToken");
@@ -121,6 +127,15 @@ describe("Parameter", () => {
 
         });
 
+        /**
+         * x-name definition from RFC 5545 (pg. 10)
+         *
+         *     x-name = "X-" [vendorid "-"] 1*(ALPHA / DIGIT / "-")
+         *     ; Reserved for experimental use.
+         *
+         *     vendorid = 3*(ALPHA / DIGIT)
+         *     ; Vendor identification
+         */
         describe("isXName()", () => {
             it("exists", () => {
                 expect(Parameter).itself.respondsTo("isXName");
@@ -161,38 +176,55 @@ describe("Parameter", () => {
             });
         });
 
+        /**
+         * param-text definition from RFC 5545 (pg. 10)
+         *
+         *     paramtext = *SAFE-CHAR
+         */
         describe("isParamText()", () => {
             it("exists", () => {
                 expect(Parameter).itself.respondsTo("isParamText");
             });
 
-            it("returns ", () => {
+            it("returns true for valid param text", () => {
 
             });
         });
 
+        /**
+         * SAFE-CHAR definition from RFC 5545 (pg. 11)
+         *
+         *     SAFE-CHAR = WSP / %x21 / %x23-2B / %x2D-39 / %x3C-7E
+         *               / NON-US-ASCII
+         *     ; Any character except CONTROL, DQUOTE, ";", ":", ","
+         */
         describe("isSafeChar()", () => {
             it("exists", () => {
                 expect(Parameter).itself.respondsTo("isSafeChar");
             });
-
-
         });
 
+        /**
+         * quoted-string definition from RFC 5545 (pg. 11)
+         *
+         *     quoted-string = DQUOTE *QSAFE-CHAR DQUOTE
+         */
         describe("isQuotedString()", () => {
             it("exists", () => {
                 expect(Parameter).itself.respondsTo("isQuotedString");
             });
-
-
         });
 
+        /**
+         * QSAFE-CHAR definition from RFC 5545 (pg. 11)
+         *
+         *     QSAFE-CHAR = WSP / %x21 / %x23-7E / NON-US-ASCII
+         *     ; Any character except CONTROL and DQUOTE
+         */
         describe("isQSafeChar()", () => {
             it("exists", () => {
                 expect(Parameter).itself.respondsTo("isQSafeChar");
             });
-
-
         });
 
     });
