@@ -16,8 +16,27 @@ import { ICalElement } from "./ICalElement";
  * @author Mark Stenglein <mark@stengle.in>
  */
 export default class Parameter implements ICalElement {
+    /**
+     * Stores the parameter name. This should be set through the set
+     *   method (which validates the input), and not by directly accessing it.
+     */
     private _paramName: string;
+    /**
+     * Stores the array of parameter values. This should be set through the set
+     *   method (which validates the input), and not by directly accessing it.
+     */
     private _paramValues: string[];
+    /**
+     * Value determines whether or not the parameter requres that the content
+     *   line stores a value alongside the Parameter. Consult the individual
+     *   implementations' documentation in the RFC to see more information on
+     *   parameters which require this.
+     *
+     * @type boolean
+     * @access private
+     * @default false
+     */
+    private _reqContentValue: boolean = false;
 
     /**
      * Constructor builds the Parameter from the parameter name and an array of
@@ -38,19 +57,24 @@ export default class Parameter implements ICalElement {
     }
 
 
-    /** Get Methods */
+    /* Get Methods */
 
-    get paramName() {
+    get paramName(): string {
         return this._paramName;
     }
 
 
-    get paramValues() {
+    get paramValues(): string[] {
         return this._paramValues;
     }
 
 
-    /** Set Methods */
+    get reqContentValue(): boolean {
+        return this._reqContentValue;
+    }
+
+
+    /* Set Methods */
 
     /**
      * Validates input param names and saves them to the object.
@@ -99,7 +123,7 @@ export default class Parameter implements ICalElement {
             ) {
                 valid = false;
             }
-        })
+        });
 
         if (!valid) {
             throw new TypeError(
@@ -110,6 +134,20 @@ export default class Parameter implements ICalElement {
         else {
             this._paramValues = newValues;
         }
+    }
+
+
+    /**
+     * Passes through and sets the reqContentValue property.
+     *
+     * @author Mark Stenglein <mark@stengle.in>
+     * @since 0.1.0
+     * @access public
+     * @param required boolean value to show if the param needs a content value
+     * @returns void
+     */
+    set reqContentValue(required: boolean) {
+        this._reqContentValue = required;
     }
 
 

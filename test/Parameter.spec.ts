@@ -30,6 +30,7 @@ describe("Parameter", () => {
             expect(testParam).to.have.property("_paramValues");
             expect(testParam).to.have.property("paramName");
             expect(testParam).to.have.property("paramValues");
+            expect(testParam).to.have.property("reqContentValue");
             expect(testParam).to.have.property("generate");
         });
     });
@@ -44,7 +45,8 @@ describe("Parameter", () => {
             it("Should return the correct name", () => {
                 const testName: string = "TEST-NAME";
                 const testValues: string[] = ["value1", "value2"];
-                const testParam: Parameter = new Parameter(testName, testValues);
+                const testParam: Parameter = new Parameter(
+                    testName, testValues);
                 const result: string = testParam.paramName;
 
                 expect(result).to.equal(testName);
@@ -55,7 +57,8 @@ describe("Parameter", () => {
             it("Should return the correct array of values", () => {
                 const testName: string = "TEST-NAME";
                 const testValues: string[] = ["value1", "value2"];
-                const testParam: Parameter = new Parameter(testName, testValues);
+                const testParam: Parameter = new Parameter(
+                    testName, testValues);
                 const result: string[] = testParam.paramValues;
 
                 expect(result).to.deep.equal(testValues);
@@ -158,7 +161,7 @@ describe("Parameter", () => {
      *   that the higher level classes can simply validate proper types and use
      *   the lower level generate method.
      */
-    describe("***generate()", () => {
+    describe("generate()", () => {
         it("Correctly generates single-valued parameters", () => {
             const param: Parameter = new Parameter("NAME", ["value1"]);
             const result: string = param.generate();
@@ -168,7 +171,8 @@ describe("Parameter", () => {
         });
 
         it("Correctly generates double-valued parameters", () => {
-            const param: Parameter = new Parameter("NAME", ["value1", "value2"]);
+            const param: Parameter = new Parameter(
+                "NAME", ["value1", "value2"]);
             const result: string = param.generate();
             const expected: string = "NAME=value1,value2";
 

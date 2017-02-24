@@ -16,7 +16,7 @@ describe("ContentLine", () => {
      */
     describe("constructor", () => {
         it("Should create an object", () => {
-            let param: Parameter = new Parameter("testParam", ["test1"]);
+            const param: Parameter = new Parameter("testParam", ["test1"]);
             const test: ContentLine = new ContentLine("name", [param], "value");
             let result: boolean = true;
 
@@ -73,68 +73,68 @@ describe("ContentLine", () => {
         });
     }); /* describe("constructor") */
 
-    /**
-     * Test `fold` static method
-     *
-     * @author Mark Stenglein <mark@stenle.in>
-     */
-     describe("fold", () => {
-         it("Should exist as a static method", () => {
-             expect(ContentLine).itself.respondsTo("fold");
-         });
+   /**
+    * Test `fold` static method
+    *
+    * @author Mark Stenglein <mark@stenle.in>
+    */
+    describe("fold", () => {
+        it("Should exist as a static method", () => {
+            expect(ContentLine).itself.respondsTo("fold");
+        });
 
-         it("Should not fold short lines", () => {
-             const test: string = "A short line";
-             const result: string = ContentLine.fold(test);
+        it("Should not fold short lines", () => {
+            const test: string = "A short line";
+            const result: string = ContentLine.fold(test);
 
-             expect(test).to.be.equal(result);
-         });
+            expect(test).to.be.equal(result);
+        });
 
-         it("Should fold lines longer than 74 characters", () => {
-             const test: string = "This is a quite long string which should" +
+        it("Should fold lines longer than 74 characters", () => {
+            const test: string = "This is a quite long string which should" +
                 " be folded on the 74th character exactly.";
 
-             const expected: string = "This is a quite long string which" +
+            const expected: string = "This is a quite long string which" +
                 " should be folded on the 74th character e\r\n xactly.";
 
-             const result: string = ContentLine.fold(test);
+            const result: string = ContentLine.fold(test);
 
-             expect(result).to.be.equal(expected);
-         });
+            expect(result).to.be.equal(expected);
+        });
 
-         it("Should fold really long lines at each fold spot.", () => {
-             const test: string = "This string is longer than 10, being 74" +
+        it("Should fold really long lines at each fold spot.", () => {
+            const test: string = "This string is longer than 10, being 74" +
                 " characters long to be quite exact.This string is longer" +
                 " than 10, being 74 characters long to be quite exact.This" +
                 " string is longer than 10, being 74 characters long to be" +
                 " quite exact.";
 
-             const expected: string = "This string is longer than 10, being" +
+            const expected: string = "This string is longer than 10, being" +
                 " 74 characters long to be quite exact.\r\n This string is" +
                 " longer than 10, being 74 characters long to be quite" +
                 " exact.\r\n This string is longer than 10, being 74" +
                 " characters long to be quite exact.";
 
-             const result: string = ContentLine.fold(test);
+            const result: string = ContentLine.fold(test);
 
-             expect(result).to.be.equal(expected);
-         });
-     }); /** describe("fold") */
+            expect(result).to.be.equal(expected);
+        });
+    }); /** describe("fold") */
 
-     describe("generate", () => {
-         it("Should respond as non-static method", () => {
+    describe("generate", () => {
+        it("Should respond as non-static method", () => {
              expect(ContentLine).respondsTo("generate");
-         });
+        });
 
-         it("Should generate properly formatted lines", () => {
-             const param1: Parameter = new Parameter("PARAM-ONE", ["value1", "value2"])
-             const param2: Parameter = new Parameter("PARAM-TWO", ["value1"])
-             const params: Parameter[] = [param1, param2];
-             const test: ContentLine = new ContentLine("NAME", params, "value");
-             const expected = "NAME;PARAM-ONE=value1,value2;PARAM-TWO=value1:value";
-             const result = test.generate();
+        it("Should generate properly formatted lines", () => {
+            const param1: Parameter = new Parameter("PARAM-ONE", ["value1", "value2"]);
+            const param2: Parameter = new Parameter("PARAM-TWO", ["value1"]);
+            const params: Parameter[] = [param1, param2];
+            const test: ContentLine = new ContentLine("NAME", params, "value");
+            const expected = "NAME;PARAM-ONE=value1,value2;PARAM-TWO=value1:value";
+            const result = test.generate();
 
-             expect(result).to.be.equal(expected);
-         });
-     }); /** describe("generate") */
+            expect(result).to.be.equal(expected);
+        });
+    }); /** describe("generate") */
 }); /** describe("ContentLine") */
