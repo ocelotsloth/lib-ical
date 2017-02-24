@@ -27,7 +27,7 @@ export default class Parameter implements ICalElement {
      */
     private _paramValues: string[];
     /**
-     * Value determines whether or not the parameter requres that the content
+     * Value determines whether or not the parameter requires that the content
      *   line stores a value alongside the Parameter. Consult the individual
      *   implementations' documentation in the RFC to see more information on
      *   parameters which require this.
