@@ -229,6 +229,37 @@ address specified by the property.
   - `ORGANIZER;CN="John Smith":mailto:jsmith@example.com`
 
 ### 3.2.3. Calendar User Type
+
+- Purpose: To identify the type of calendar user specified by the property.
+
+- Format Definition: This property parameter is defined by the following
+notation:
+
+> ```
+> cutypeparam      = "CUTYPE" "="
+>                  ("INDIVIDUAL"   ; An individual
+>                 / "GROUP"        ; A group of individuals
+>                 / "RESOURCE"     ; A physical resource
+>                 / "ROOM"         ; A room resource
+>                 / "UNKNOWN"      ; Otherwise not known
+>                 / x-name         ; Experimental type
+>                 / iana-token)    ; Other IANA-registered
+>                                  ; type
+> ; Default is INDIVIDUAL
+> ```
+
+- This parameter can be specified on properties with a CAL-ADDRESS value type.
+
+- Identifies the type of calendar user specified by the property. If not
+specified on a property that allows the parameter, the default is INDIVIDUAL.
+
+- Applications MUST treat x-name and iana-token values they do not recognize
+the same as they would the UNKNOWN value.
+
+- Example:
+
+  - `ATTENDEE;CUTYPE=GROUP:mailto:ietf-calsch@example.org`
+
 ### 3.2.4. Delegators
 ### 3.2.5. Delegatees
 ### 3.2.6. Directory Entry Reference
