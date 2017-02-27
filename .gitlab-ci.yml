@@ -22,6 +22,7 @@ cache:
 
 types:
   - test
+  - deploy
 
 test_lib-ical:
   type: test
