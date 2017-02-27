@@ -40,7 +40,7 @@ pages:
   script:
   - npm run glabCLI
   - mkdir .public
-  - cp -r mocawesome-reports/* .public
+  - cp -r mochawesome-reports/* .public
   - mv .public public
   - mv public/mochawesome.html public/index.html
   artifacts:
