@@ -34,7 +34,11 @@ test_lib-ical:
 
 pages:
   stage: deploy
+  before_script:
+    - npm install
+    - npm install -g typescript ts-node gulp-cli
   script:
+  - npm run glabCLI
   - mkdir .public
   - cp -r mocawesome-reports/* .public
   - mv .public public
@@ -44,4 +48,3 @@ pages:
     - public
   only:
   - develop
-
