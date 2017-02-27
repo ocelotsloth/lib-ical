@@ -13,7 +13,7 @@ how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+For this repository, you will need nodejs and npm installed.
 
 ```
 Give examples
