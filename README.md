@@ -92,7 +92,6 @@ file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
 * Inspiration
 * etc
 
