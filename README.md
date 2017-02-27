@@ -1,5 +1,7 @@
 # lib-ical
 
+![](https://www.gnu.org/graphics/agplv3-155x51.png)
+
 lib-ical is an npm library which implements the ical standard defined in RFC
 5545.
 
