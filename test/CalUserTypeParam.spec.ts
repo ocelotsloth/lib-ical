@@ -25,19 +25,48 @@ describe("CalUserTypeParam", () => {
     });
 
     describe("constructor()", () => {
+        it("Generates a value", () => {
+            const param: CalUserTypeParam = new CalUserTypeParam("");
+            expect(param).to.exist;
+        });
+
+        it("Generates a default value correctly", () => {
+            const param: CalUserTypeParam = new CalUserTypeParam("");
+            expect(param.calUserType).to.be.equal("INDIVIDUAL");
+        });
+
+        it("Sets non-default value correctly", () => {
+            const param: CalUserTypeParam = new CalUserTypeParam("ROOM");
+            expect(param.calUserType).to.be.equal("ROOM");
+        });
+
+        it("Fails on incorrect input type", () => {
+            expect(() => {
+                const param: CalUserTypeParam = new CalUserTypeParam("INVALID;NAME");
+            }).to.throw("Cal User Type must either be known or validXName/Iana Token");
+        });
 
     });
 
-    describe("GET Methods", () => {
+    describe("GET/SET Methods", () => {
+        it("Allows for changes and returns correct values", () => {
+            const param: CalUserTypeParam = new CalUserTypeParam("INDIVIDUAL");
+            const res1: string = param.calUserType;
 
-    });
+            param.calUserType = "GROUP";
+            const res2: string = param.calUserType;
 
-    describe("SET Methods", () => {
-
+            expect(res1).to.be.equal("INDIVIDUAL");
+            expect(res2).to.be.equal("GROUP");
+        });
     });
 
     describe("generate()", () => {
-
+        it("Generates the right value", () => {
+            const param: CalUserTypeParam = new CalUserTypeParam("GROUP");
+            const expected: string = "CUTYPE=GROUP";
+            expect(param.generate()).to.equal(expected);
+        });
     });
 
 });

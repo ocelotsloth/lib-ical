@@ -17,13 +17,53 @@
  */
 import Parameter from "./Parameter";
 
+/**
+ * Class implementing section 3.2.3 of RFC 5545: Calendar User Type
+ *
+ * Default value of the user type should be INDIVIDUAL if none specified
+ *   (empty string).
+ *
+ * TODO: Verify this is only specified on properties with the CAL-ADDRESS
+ *       value type.
+ *
+ * @author Mark Stenglein <mark@stenglein>
+ * @since 0.1.0
+ */
 export default class CalUserTypeParam extends Parameter {
     private _calUserType: string;
+
     constructor(usertype: string) {
         super("CUTYPE", []);
+
+        if (usertype.length > 0) {
+            this.calUserType = usertype;
+        }
+        else if (usertype.length === 0) {
+            // Sets the default of INDIVIDUAL to start
+            this.calUserType = "INDIVIDUAL";
+        }
     }
 
     get calUserType(): string {
         return this._calUserType;
     }
+
+    set calUserType(newType: string) {
+        if (newType === "INDIVIDUAL" ||
+            newType === "GROUP" ||
+            newType === "RESOURCE" ||
+            newType === "ROOM" ||
+            newType === "UNKNOWN" ||
+            Parameter.isXName(newType) ||
+            Parameter.isIanaToken(newType)
+        ) {
+            this._calUserType = newType;
+            this.paramValues = [newType];
+        }
+        else {
+            throw new TypeError("Cal User Type must either be known or valid" +
+                "XName/Iana Token");
+        }
+    }
+
 }
