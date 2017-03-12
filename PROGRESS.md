@@ -261,6 +261,32 @@ the same as they would the UNKNOWN value.
   - `ATTENDEE;CUTYPE=GROUP:mailto:ietf-calsch@example.org`
 
 ### 3.2.4. Delegators
+
+- Purpose: To specify the calendar users that have delegated their
+participation to the calendar user specified by the property.
+
+- Format Definition: This property parameter is defined by the following
+notation:
+
+> ```
+> delfromparam = "DELEGATED-FROM" "=" DQUOTE cal-address
+>                DQUOTE *("," DQUOTE cal-address DQUOTE)
+> ```
+
+- Description: This parameter can be specified on properties with a
+ CAL-ADDRESS value type. This parameter specifies those calendar
+ users that have delegated their participation in a group-scheduled
+ event or to-do to the calendar user specified by the property.
+ The individual calendar address parameter values MUST each be
+ specified in a quoted-string.
+
+- Example:
+
+> ```
+> ATTENDEE;DELEGATED-FROM="mailto:jsmith@example.com":mailto:
+>  jdoe@example.com
+> ```
+
 ### 3.2.5. Delegatees
 ### 3.2.6. Directory Entry Reference
 ### 3.2.7. Inline Encoding
