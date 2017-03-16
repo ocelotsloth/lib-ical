@@ -29,11 +29,11 @@ export default class DelegatorsParam extends Parameter {
         }
     }
 
-    get delegators(): string | string[] {
+    get delegators(): string[] {
         return this._delegators;
     }
 
-    set delegators(newDelegators: string | string[]) {
+    set delegators(newDelegators: string[]) {
         this._delegators = newDelegators;
     }
 }
