@@ -1,0 +1,51 @@
+* lib-ical
+
+[[https://www.gnu.org/graphics/agplv3-155x51.png]]
+
+lib-ical is an npm library which implements the ical standard defined in RFC
+5545.
+
+** Getting Started
+
+*** Prerequisites
+
+    For this repository, you will need nodejs and npm installed.
+
+*** Installing
+
+    Simply install with npm, and optionally save it to your dependencies:
+
+** Running the tests
+
+   To run the test suite, simply clone the repository and run ~npm test~.
+
+** Coding style
+
+   The linting rules defined in [[.tslint]] should be folled. The test suite does
+   (will) enforce this for all pull requests.
+
+** Contributing
+
+   Please read
+   [[CONTRIBUTING.org]]
+
+   for details on our code of conduct, and the process for submitting pull
+   requests to us.
+
+** Versioning
+
+   We use [SemVer](http://semver.org/) for versioning. For the versions available,
+   see the [tags on this repository](https://github.com/your/project/tags).
+
+** Authors
+
+   - **Mark Stenglein** - *Initial work* - [[https://github.com/ocelotsloth][ocelotsloth]]
+
+   See also the list of [[https://git.gmu.edu/srct/lib-ical/contributors][contributors]]
+   who participated in this project.
+
+** License
+
+   This project is licensed under the AGPLv3 License - see the [[LICENSE]]
+   file for details
+
