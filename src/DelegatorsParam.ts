@@ -25,7 +25,7 @@ export default class DelegatorsParam extends Parameter {
         super("DELEGATED-FROM", []);
         if (Array.isArray(delegators)) {
             delegators = (delegators instanceof Array) ? delegators : [delegators];
-            this._delegators = this._delegators.concat(<string[]>delegators)
+            this._delegators = this._delegators.concat(<string[]>delegators);
         }
     }
 
