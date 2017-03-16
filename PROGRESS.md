@@ -189,7 +189,7 @@ breaks.
   - Applications MUST ignore x-param and iana-param values they don't
   recognize.
 
-### 3.2.1. Alternate Text Representation
+#### 3.2.1. Alternate Text Representation ####
 
 - Paremeter Name: `ALTREP`
 
@@ -208,7 +208,7 @@ representation for a textual property value.
 
   - The URI parameter value MUST be specified in a quoted-string.
 
-### 3.2.2. Common Name
+#### 3.2.2. Common Name ####
 
 - To specify the common name to be associated with the calendar user specified
 by the property.
@@ -228,7 +228,7 @@ address specified by the property.
 
   - `ORGANIZER;CN="John Smith":mailto:jsmith@example.com`
 
-### 3.2.3. Calendar User Type
+#### 3.2.3. Calendar User Type ####
 
 - Purpose: To identify the type of calendar user specified by the property.
 
@@ -260,7 +260,7 @@ the same as they would the UNKNOWN value.
 
   - `ATTENDEE;CUTYPE=GROUP:mailto:ietf-calsch@example.org`
 
-### 3.2.4. Delegators
+#### 3.2.4. Delegators ####
 
 - Purpose: To specify the calendar users that have delegated their
 participation to the calendar user specified by the property.
@@ -287,22 +287,37 @@ notation:
 >  jdoe@example.com
 > ```
 
-### 3.2.5. Delegatees
-### 3.2.6. Directory Entry Reference
-### 3.2.7. Inline Encoding
-### 3.2.8. Format Type
-### 3.2.9. Free/Busy Time type
-### 3.2.10. Language
-### 3.2.11. Group or List Membership
-### 3.2.12. Participation Status
-### 3.2.13. Recurrence Identifier Range
-### 3.2.14. Alarm Trigger Relationship
-### 3.2.15. Relationship Type
-### 3.2.16. Participation Role
-### 3.2.17. RSVP Expectation
-### 3.2.18. Sent By
-### 3.2.19. Time Zone Identifier
-### 3.2.20. Value Data Types
+#### 3.2.5. Delegatees ####
+
+#### 3.2.6. Directory Entry Reference ####
+
+#### 3.2.7. Inline Encoding ####
+
+#### 3.2.8. Format Type ####
+
+#### 3.2.9. Free/Busy Time type ####
+
+#### 3.2.10. Language ####
+
+#### 3.2.11. Group or List Membership ####
+
+#### 3.2.12. Participation Status ####
+
+#### 3.2.13. Recurrence Identifier Range ####
+
+#### 3.2.14. Alarm Trigger Relationship ####
+
+#### 3.2.15. Relationship Type ####
+
+#### 3.2.16. Participation Role ####
+
+#### 3.2.17. RSVP Expectation ####
+
+#### 3.2.18. Sent By ####
+
+#### 3.2.19. Time Zone Identifier ####
+
+#### 3.2.20. Value Data Types ####
 
 ## 3.3. Property Value Data Types
 
