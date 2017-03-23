@@ -8,10 +8,10 @@
     "dist/"
   ],
   "scripts": {
-    "test": "NODE_ENV=test mocha --recursive --compilers ts:ts-node/register --bail",
-    "glabCLI": "mocha -R mochawesome -r ts-node/register test/**/*.spec.ts",
+    "test": "NODE_ENV=test nyc --reporter=text mocha -R nyan --recursive --compilers ts:ts-node/register --bail",
+    "glabCLI": "mocha -r ts-node/register test/**/*.spec.ts",
     "lint": "tslint -r tslint.json src/**/*.ts",
-    "cover": "NODE_ENV=test nyc --reporter=text-summary npm t",
+    "cover": "NODE_ENV=test nyc --reporter=text-summary npm run glabCLI",
     "coveralls": "nyc report --reporter=lcov"
   },
   "repository": {
