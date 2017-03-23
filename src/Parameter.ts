@@ -232,7 +232,7 @@ export default class Parameter implements ICalElement {
      * TODO: Implement this!
      */
     public static isXName(input: string): boolean {
-        if (!(input.substring(0,2) === "X-")) {
+        if (!(input.substring(0, 2) === "X-")) {
             return false;
         }
         return /^[a-zA-Z0-9-]+$/.test(input);
