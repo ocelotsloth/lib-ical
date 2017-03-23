@@ -9,10 +9,9 @@
   ],
   "scripts": {
     "test": "NODE_ENV=test nyc --reporter=text mocha -R nyan --recursive --compilers ts:ts-node/register --bail",
-    "glabCLI": "mocha -r ts-node/register test/**/*.spec.ts",
+    "glabCLI": "mocha -R mochawesome -r ts-node/register test/**/*.spec.ts",
     "lint": "tslint -r tslint.json src/**/*.ts",
-    "cover": "NODE_ENV=test nyc --reporter=text-summary npm run glabCLI",
-    "coveralls": "nyc report --reporter=lcov"
+    "cover": "NODE_ENV=test nyc --reporter=text-summary npm run glabCLI"
   },
   "repository": {
     "type": "git",
