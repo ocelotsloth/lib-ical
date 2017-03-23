@@ -38,7 +38,7 @@ export default class CalUserTypeParam extends Parameter {
         if (usertype.length > 0) {
             this.calUserType = usertype;
         }
-        else if (usertype.length === 0) {
+        else {
             // Sets the default of INDIVIDUAL to start
             this.calUserType = "INDIVIDUAL";
         }
