@@ -8,9 +8,10 @@
     "dist/"
   ],
   "scripts": {
-    "test": "mocha -R nyan -r ts-node/register test/**/*.spec.ts",
+    "test": "NODE_ENV=test mocha --recursive --compilers ts:ts-node/register --bail",
     "glabCLI": "mocha -R mochawesome -r ts-node/register test/**/*.spec.ts",
-    "lint": "tslint -r tslint.json src/**/*.ts"
+    "lint": "tslint -r tslint.json src/**/*.ts",
+    "cover": "NODE_ENV=test nyc npm t"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,31 @@
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
     "mochawesome": "^2.0.4",
+    "nyc": "^10.1.2",
     "sinon": "^1.17.7",
     "ts-node": "^2.1.0",
     "tslint": "^4.4.2",
     "typescript": "^2.1.6"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "nyc": {
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "typings"
+  ],
+  "extension": [
+    ".ts"
+  ],
+  "require": [
+    "ts-node/register"
+  ],
+  "reporter": [
+    "json",
+    "html"
+  ],
+  "all": true
+  }
 }

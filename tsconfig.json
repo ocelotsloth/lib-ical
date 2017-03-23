@@ -1,7 +1,7 @@
 {
     "files": [
-        "src/ContentLine.ts",
-        "src/util.ts"
+        "src/**/*.ts",
+        "src/*.ts"
     ],
     "compilerOptions": {
         "module": "commonjs",

@@ -30,7 +30,7 @@ test_lib-ical:
     - npm install
     - npm install -g typescript ts-node gulp-cli
   script:
-    - npm run glabCLI
+    - npm run cover
 
 pages:
   stage: deploy
