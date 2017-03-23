@@ -26,3 +26,10 @@ node_modules
 .projectfile
 
 mochawesome-reports/
+
+.nyc_output/
+
+.project
+
+coverage/
+
