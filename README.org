@@ -2,6 +2,8 @@
 
 [[https://www.gnu.org/graphics/agplv3-155x51.png]]
 
+[[https://git.gmu.edu/srct/lib-ical/badges/develop/coverage.svg]]
+
 lib-ical is an npm library which implements the ical standard defined in RFC
 5545.
 
