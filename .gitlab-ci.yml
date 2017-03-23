@@ -44,7 +44,6 @@ pages:
   - cp -r mochawesome-reports/* .public/unit/
   - cp -r coverage/* .public/coverage/
   - mv .public public
-  - mv public/mochawesome.html public/index.html
   artifacts:
     paths:
     - public
