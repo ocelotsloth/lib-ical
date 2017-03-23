@@ -43,6 +43,7 @@ pages:
   - mkdir -p .public/coverage
   - cp -r mochawesome-reports/* .public/unit/
   - cp -r coverage/* .public/coverage/
+  - mv .public/unit/mochawesome.html .public/unit/index.html
   - mv .public public
   artifacts:
     paths:
