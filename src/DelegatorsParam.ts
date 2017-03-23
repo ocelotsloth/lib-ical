@@ -17,6 +17,33 @@
  */
 import Parameter from "./Parameter";
 
+/**
+ * DelegatorsParam Class (Chapter 3.2.4)
+ *
+ * - Purpose: To specify the calendar users that have delegated their
+ *   participation to the calendar user specified by the property.
+ *
+ * - Format Definition: This property parameter is defined by the following
+ *   notation:
+ *
+ *     - delfromparam  = "DELEGATED-FROM" "=" DQUOTE cal-address
+ *                       DQUOTE *("," DQUOTE cal-address DQUOTE)
+ *
+ * - Description:
+ *     - The parameter is specified on properties of the CAL-ADDRESS value
+ *       type.
+ *     - TODO: Enforce this restriction on the type allowed to hold this parameter
+ *     - This parameter specified those calendar users that have delegated their
+ *       participation in a group-scheduled event or to-do to the calendar user
+ *       specified by the property.
+ *     - The individual calendar address parameter values MUST each be specified
+ *       in a quoted-string.
+ *
+ * - Example:
+ *
+ *     ATTENDEE;DELEGATED-FROM="mailto:jsmith@example.com":mailto:
+ *      jdoe@example.com
+ */
 export default class DelegatorsParam extends Parameter {
     private _delegators: string[];
 
