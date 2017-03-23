@@ -39,8 +39,10 @@ pages:
     - npm install -g typescript ts-node gulp-cli
   script:
   - npm run glabCLI
-  - mkdir .public
-  - cp -r mochawesome-reports/* .public
+  - mkdir -p .public/unit
+  - mkdir -p .public/coverage
+  - cp -r mochawesome-reports/* .public/unit/
+  - cp -r coverage/* .public/coverage/
   - mv .public public
   - mv public/mochawesome.html public/index.html
   artifacts:
