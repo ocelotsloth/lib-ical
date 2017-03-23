@@ -38,7 +38,7 @@ pages:
     - npm install
     - npm install -g typescript ts-node gulp-cli
   script:
-  - npm run cover
+  - npm run coverWeb
   - mkdir -p .public/unit
   - mkdir -p .public/coverage
   - cp -r mochawesome-reports/* .public/unit/

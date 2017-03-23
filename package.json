@@ -12,6 +12,7 @@
     "glabCLI": "mocha -R mochawesome -r ts-node/register test/**/*.spec.ts",
     "lint": "tslint -r tslint.json src/**/*.ts",
     "cover": "NODE_ENV=test nyc --reporter=text-summary npm run glabCLI"
+    "coverWeb": "NODE_ENV=test nyc npm run glabCLI"
   },
   "repository": {
     "type": "git",
