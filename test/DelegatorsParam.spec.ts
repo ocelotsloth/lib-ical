@@ -27,5 +27,41 @@ describe("DelegatorsParam", () => {
         expect(DelegatorsParam).to.exist;
     });
 
+    describe("Constructor", () => {
+        it("Should create an object", () => {
+            const delegator: string = "Mark Stenglein";
+            const delegatorParam: DelegatorsParam = new DelegatorsParam(delegator);
+            expect(delegatorParam).to.exist;
+        });
+
+        it("Should convert string to string[]", () => {
+            const delegator: string = "Mark Stenglein";
+            const testParam: DelegatorsParam = new DelegatorsParam(delegator);
+            expect(testParam.delegators).to.be.deep.equal([delegator]);
+        });
+
+        it("Should not add extra layer to input array", () => {
+            const delegators: string[] = ["Mark", "Stenglein"];
+            const testParam: DelegatorsParam = new DelegatorsParam(delegators);
+            expect(testParam.delegators).to.not.deep.equal([delegators]);
+            expect(testParam.delegators).to.deep.equal(delegators);
+        });
+    });
+
+    describe("Setter/Getter", () => {
+        it("Sets paramValues as well", () => {
+            const delegators: string[] = ["Mark", "Stenglein"];
+            const testParam: DelegatorsParam = new DelegatorsParam("test");
+            testParam.delegators = delegators;
+            expect(testParam.paramValues).to.exist;
+        });
+
+        it("Sets paramValues correctly", () => {
+            const delegators: string[] = ["Mark", "Stenglein"];
+            const testParam: DelegatorsParam = new DelegatorsParam("test");
+            testParam.delegators = delegators;
+            expect(testParam.paramValues).to.be.deep.equal(delegators);
+        });
+    });
 });
 

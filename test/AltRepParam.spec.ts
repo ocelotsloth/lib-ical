@@ -29,6 +29,12 @@ describe("AltRepParam", () => {
             const param: AltRepParam = new AltRepParam("valid@uri.com");
             expect(param).to.exist;
         });
+
+        it("should complain on empty uri", () => {
+            expect(() => {
+                const param: AltRepParam = new AltRepParam("");
+            }).to.throw("uri must be defined for AltRepParam");
+        });
     });
 
     describe("GET methods", () => {

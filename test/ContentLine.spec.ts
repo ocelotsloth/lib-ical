@@ -138,6 +138,28 @@ describe("ContentLine", () => {
         });
     }); /** describe("fold") */
 
+    describe("set", () => {
+        describe("name", () => {
+            it("Should throw type error on non-alphabetic name", () => {
+                const param1: Parameter = new Parameter("P-ONE", ["value1", "value2"]);
+                const testLine: ContentLine = new ContentLine("name", [param1], "value");
+                expect(() => {
+                    testLine.name = "$%^&*";
+                }).to.throw("'name' must be alphabetic!");
+            });
+        });
+
+        describe("value", () => {
+            it("Should throw type error on non-alphabetic name", () => {
+                const param1: Parameter = new Parameter("P-ONE", ["value1", "value2"]);
+                const testLine: ContentLine = new ContentLine("name", [param1], "value");
+                expect(() => {
+                    testLine.value = "$%^&*";
+                }).to.throw("'value' must be alphabetic!");
+            });
+        });
+    });
+
     describe("generate", () => {
         it("Should respond as non-static method", () => {
              expect(ContentLine).respondsTo("generate");
