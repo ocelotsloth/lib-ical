@@ -1,7 +1,13 @@
 {
     "files": [
-        "src/**/*.ts",
-        "src/*.ts"
+        "src/ICalElement.ts",
+        "src/Parameter.ts",
+        "src/CalUserTypeParam.ts",
+        "src/ContentLine.ts",
+        "src/AltRepParam.ts",
+        "src/DelegatorsParam.ts",
+        "src/CommonNameParam.ts",
+        "src/util.ts"
     ],
     "compilerOptions": {
         "module": "commonjs",

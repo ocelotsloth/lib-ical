@@ -11,7 +11,8 @@
     "test": "NODE_ENV=test mocha --recursive --compilers ts:ts-node/register --bail",
     "glabCLI": "mocha -R mochawesome -r ts-node/register test/**/*.spec.ts",
     "lint": "tslint -r tslint.json src/**/*.ts",
-    "cover": "NODE_ENV=test nyc npm t"
+    "cover": "NODE_ENV=test nyc --reporter=text-summary npm t",
+    "coveralls": "nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
@@ -35,23 +36,23 @@
   },
   "dependencies": {},
   "nyc": {
-  "include": [
-    "src/*.ts",
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "typings"
-  ],
-  "extension": [
-    ".ts"
-  ],
-  "require": [
-    "ts-node/register"
-  ],
-  "reporter": [
-    "json",
-    "html"
-  ],
-  "all": true
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html"
+    ],
+    "all": true
   }
 }

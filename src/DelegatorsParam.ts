@@ -1,4 +1,3 @@
-
 /*
  * lib-ical
  * Copyright (C) 2017 Mark Stenglein
@@ -23,10 +22,10 @@ export default class DelegatorsParam extends Parameter {
 
     constructor(delegators: string | string[]) {
         super("DELEGATED-FROM", []);
-        if (Array.isArray(delegators)) {
-            delegators = (delegators instanceof Array) ? delegators : [delegators];
-            this._delegators = this._delegators.concat(<string[]>delegators);
-        }
+
+        // Converts single string object to an array.
+        delegators = (delegators instanceof Array) ? delegators : [delegators];
+        this._delegators = delegators;
     }
 
     get delegators(): string[] {
@@ -35,5 +34,6 @@ export default class DelegatorsParam extends Parameter {
 
     set delegators(newDelegators: string[]) {
         this._delegators = newDelegators;
+        this.paramValues = this._delegators;
     }
 }
