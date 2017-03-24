@@ -63,5 +63,21 @@ describe("DelegatorsParam", () => {
             expect(testParam.paramValues).to.be.deep.equal(delegators);
         });
     });
+
+    describe("Generator", () => {
+        it("Properly Generates output for single delegator", () => {
+            const delegators: string[] = ["\"mailto:mark@stengle.in\""];
+            const testParam: DelegatorsParam = new DelegatorsParam(delegators);
+            const actual: string = "DELEGATED-FROM=\"mailto:mark@stengle.in\"";
+            expect(testParam.generate()).to.be.equal(actual);
+        });
+
+        it("Properly Generates output for multiple delegators", () => {
+            const delegators: string[] = ["\"mailto:one@one.com\"", "\"mailto:two@two.com\""];
+            const testParam: DelegatorsParam = new DelegatorsParam(delegators);
+            const actual: string = "DELEGATED-FROM=\"mailto:one@one.com\",\"mailto:two@two.com\"";
+            expect(testParam.generate()).to.be.equal(actual);
+        });
+    });
 });
 

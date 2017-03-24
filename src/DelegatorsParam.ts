@@ -43,24 +43,53 @@ import Parameter from "./Parameter";
  *
  *     ATTENDEE;DELEGATED-FROM="mailto:jsmith@example.com":mailto:
  *      jdoe@example.com
+ *
+ * @since 0.1.0
+ * @author Mark Stenglein <mark@stengle.in>
  */
 export default class DelegatorsParam extends Parameter {
     private _delegators: string[];
 
+    /**
+     * Takes either one email or an array of emails as string or string[]
+     *
+     * - There is really no need to require that "mailto:" be included here,
+     *   as it can be easilly added by the set method.
+     *
+     * @since 0.1.0
+     * @author Mark Stenglein <mark@stengle.in>
+     */
     constructor(delegators: string | string[]) {
         super("DELEGATED-FROM", []);
 
         // Converts single string object to an array.
         delegators = (delegators instanceof Array) ? delegators : [delegators];
-        this._delegators = delegators;
+        this.delegators = delegators;
     }
 
+    /**
+     * Simply returns the current delegators, as a string array.
+     *
+     * @since 0.1.0
+     * @author Mark Stenglein <mark@stengle.in>
+     */
     get delegators(): string[] {
         return this._delegators;
     }
 
+    /**
+     * Sets the private _delegators and also writes the "mailto:" to the
+     * front of each delegator before writing super.paramValues
+     *
+     * TODO: Add proper testing to make sure that only valid delegators
+     *       are added
+     *
+     * @since 0.1.0
+     * @author Mark Stenglein <mark@stengle.in>
+     */
     set delegators(newDelegators: string[]) {
         this._delegators = newDelegators;
         this.paramValues = this._delegators;
     }
 }
+
