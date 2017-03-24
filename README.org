@@ -28,8 +28,18 @@ lib-ical is an npm library which implements the ical standard defined in RFC
 
 ** Contributing
 
-   Please read
-   [[CONTRIBUTING.org]]
+   Please read [[CONTRIBUTING.org]] for detailed information on how to get started
+   working on this project. This file goes over the project standards and requirements
+   of any submissions.
+
+*** Finding something to contribute with
+
+   I would highly reccomend searching the tree for any `TODO` items if you are looking
+   for some direction on something to do. Assuming you are in the root of the repo,
+   the command `grep "TODO" -r ./src` should do a good job of showing you where any
+   unfinished thoughts are.
+
+   From there, simply work on the fix and submit the merge request or patch when done!
 
    for details on our code of conduct, and the process for submitting pull
    requests to us.
