@@ -19,7 +19,7 @@
     "url": "git@git.gmu.edu:srct/lib-ics.git"
   },
   "author": "Mark Stenglein",
-  "license": "AGPLv3",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.39",
