@@ -66,7 +66,7 @@ export default class AltRepParam extends Parameter {
     set uri(newUri: string) {
         if (Parameter.isQSafeChar(newUri)) {
             this._uri = newUri;
-            this.paramValues = [`\""${this.uri}\"`];
+            this.paramValues = ["\"" + this.uri + "\""];
         }
         else if (Parameter.isQuotedString(newUri)) {
             this._uri = newUri;
