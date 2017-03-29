@@ -223,10 +223,8 @@ export default class Parameter implements ICalElement {
      * TODO: Implement this!
      */
     public static isXName(input: string): boolean {
-        if (!(input.substring(0, 2) === "X-")) {
-            return false;
-        }
-        return /^[a-zA-Z0-9-]+$/.test(input);
+        return input.substring(0, 2) === "X-" &&
+            /^[a-zA-Z0-9-]+$/.test(input);
     }
 
     /**
@@ -275,15 +273,9 @@ export default class Parameter implements ICalElement {
      * @returns boolean If the input is a valid `quoted-string`
      */
     public static isQuotedString(test: string): boolean {
-        let result: boolean = false;
-        if (
-            test.charAt(0) === "\"" &&
-            test.charAt(test.length - 1) === "\"" &&
-            Parameter.isQSafeChar(test.substring(1, test.length - 1))
-        ) {
-            result = true;
-        }
-        return result;
+        return (test.charAt(0) === "\"" &&
+                test.charAt(test.length - 1) === "\"" &&
+                Parameter.isQSafeChar(test.substring(1, test.length - 1)));
     }
 
 
