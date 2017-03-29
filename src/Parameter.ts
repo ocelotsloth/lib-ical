@@ -132,25 +132,19 @@ export default class Parameter implements ICalElement {
      * @throws TypeError if any of the input values are not valid param-value's
      */
     set paramValues(newValues: string[]) {
-        let valid: boolean = true;
         newValues.forEach(newValue => {
             if (
                 !((Parameter.isParamText(newValue)) ||
                 (Parameter.isQuotedString(newValue)))
             ) {
-                valid = false;
+                throw new TypeError(
+                    "param-value must either be valid paramtext or" +
+                        " quoted-string"
+                );
             }
         });
 
-        if (!valid) {
-            throw new TypeError(
-                "param-value must either be valid paramtext or" +
-                " quoted-string"
-            );
-        }
-        else {
-            this._paramValues = newValues;
-        }
+        this._paramValues = newValues;
     }
 
 
