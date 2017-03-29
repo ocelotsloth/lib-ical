@@ -44,6 +44,8 @@ import Parameter from "./Parameter";
  *     ATTENDEE;DELEGATED-FROM="mailto:jsmith@example.com":mailto:
  *      jdoe@example.com
  *
+ *   - Note: The Param here ends with the DQUOTE, the rest is part of ATTENDEE
+ *
  * @since 0.1.0
  * @author Mark Stenglein <mark@stengle.in>
  */
@@ -81,15 +83,34 @@ export default class DelegatorsParam extends Parameter {
      * Sets the private _delegators and also writes the "mailto:" to the
      * front of each delegator before writing super.paramValues
      *
-     * TODO: Add proper testing to make sure that only valid delegators
+     * DONE: Add proper testing to make sure that only valid delegators
      *       are added
      *
      * @since 0.1.0
      * @author Mark Stenglein <mark@stengle.in>
      */
     set delegators(newDelegators: string[]) {
+        // Empty array to build the parent paramValues from newDelegators
+        const paramValues: string[] = [];
+
+        /*
+         * Checks to make sure that each individual Delegator
+         *  consists only of QSafeChars before wrapping it in DQUOTEs
+         *  and adding the `mailto:`
+         */
+        newDelegators.forEach((newDelegator: string) => {
+            if (!Parameter.isQSafeChar(newDelegator)) {
+                throw new TypeError("Delegator must be QSafeChars");
+            } else {
+                paramValues.push("\"mailto:" + newDelegator + "\"");
+            }
+        });
+
+        // Passes the built paramValues to the Parent class
+        this.paramValues = paramValues;
+
+        // Saves the given values for the getter funciton
         this._delegators = newDelegators;
-        this.paramValues = this._delegators;
     }
 }
 
