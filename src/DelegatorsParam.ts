@@ -95,11 +95,8 @@ export default class DelegatorsParam extends Parameter {
             throw new TypeError("Delegator must be QSafeChars");
 
         // Construct paramValues for generation
-        const paramValues: string[] = newDelegators.map(
+        this.paramValues = newDelegators.map(
             delegator => `"mailto:${delegator}"`);
-
-        // Passes the built paramValues to the Parent class
-        this.paramValues = paramValues;
 
         // Saves the given values for the getter funciton
         this._delegators = newDelegators;
