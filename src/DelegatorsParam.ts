@@ -90,21 +90,13 @@ export default class DelegatorsParam extends Parameter {
      * @author Mark Stenglein <mark@stengle.in>
      */
     set delegators(newDelegators: string[]) {
-        // Empty array to build the parent paramValues from newDelegators
-        const paramValues: string[] = [];
+        // Ensure each delegator is valid QSafeChar String
+        if (!newDelegators.every(Parameter.isQSafeChar))
+            throw new TypeError("Delegator must be QSafeChars");
 
-        /*
-         * Checks to make sure that each individual Delegator
-         *  consists only of QSafeChars before wrapping it in DQUOTEs
-         *  and adding the `mailto:`
-         */
-        newDelegators.forEach((newDelegator: string) => {
-            if (!Parameter.isQSafeChar(newDelegator)) {
-                throw new TypeError("Delegator must be QSafeChars");
-            } else {
-                paramValues.push("\"mailto:" + newDelegator + "\"");
-            }
-        });
+        // Construct paramValues for generation
+        const paramValues: string[] = newDelegators.map(
+            delegator => `"mailto:${delegator}"`);
 
         // Passes the built paramValues to the Parent class
         this.paramValues = paramValues;
