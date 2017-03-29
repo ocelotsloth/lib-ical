@@ -95,15 +95,6 @@ export default class ContentLine implements ICalElement {
      * @author Mark Stenglein <mark@stengle.in>
      */
     public generate(): string {
-        let outputLine = this.name;
-
-        this.params.forEach((param) => {
-            outputLine += ";";
-            outputLine += param.generate();
-        });
-
-        outputLine += ":" + this.value + CRLF;
-
-        return ContentLine.fold(outputLine);
+        return `${this.name};${this.params.map(param => param.generate()).join(";")}:${this.value}${CRLF}`;
     }
 }

@@ -170,7 +170,7 @@ describe("ContentLine", () => {
             const param2: Parameter = new Parameter("PARAM-TWO", ["value1"]);
             const params: Parameter[] = [param1, param2];
             const test: ContentLine = new ContentLine("NAME", params, "value");
-            const expected = "NAME;PARAM-ONE=value1,value2;PARAM-TWO=value1:value";
+            const expected = "NAME;PARAM-ONE=value1,value2;PARAM-TWO=value1:value\r\n";
             const result = test.generate();
 
             expect(result).to.be.equal(expected);
