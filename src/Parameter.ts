@@ -132,19 +132,16 @@ export default class Parameter implements ICalElement {
      * @throws TypeError if any of the input values are not valid param-value's
      */
     set paramValues(newValues: string[]) {
-        newValues.forEach(newValue => {
-            if (
-                !((Parameter.isParamText(newValue)) ||
-                (Parameter.isQuotedString(newValue)))
-            ) {
-                throw new TypeError(
-                    "param-value must either be valid paramtext or" +
-                        " quoted-string"
-                );
-            }
-        });
-
-        this._paramValues = newValues;
+        // Ensure each paramValue is valid ParamText or QuotedString
+        if (!(newValues.every(Parameter.isParamValue))) {
+            throw new TypeError(
+                "param-value must either be valid paramtext or quoted-string"
+            );
+        }
+        // Write paramValues
+        else {
+            this._paramValues = newValues;
+        }
     }
 
 
@@ -174,21 +171,21 @@ export default class Parameter implements ICalElement {
      * @returns string Representation of the Parameter as defined in RFC 5545
      */
     public generate(): string {
-        let outputString = this.paramName + "=";
-        /**
-         * Goes through each parameter value and adds it, being sure to place
-         * the comma for the 2nd parameter onwards.
-         */
-        for (let i = 0; i < this.paramValues.length; i++) {
-            if (i !== 0) {
-                outputString += ",";
-            }
-            outputString += this.paramValues[i];
-        }
-
-        return outputString;
+        return `${this.paramName}=${this.paramValues.join(",")}`;
     }
 
+    /**
+     * Checks to see if the input string is proper paramValue
+     *
+     * @author Mark Stenglein <mark@stengle.in>
+     * @since 0.1.0
+     * @param input Input string to be tested
+     * @returns boolean result
+     */
+    public static isParamValue(input: string): boolean {
+        return Parameter.isParamText(input) ||
+            Parameter.isQuotedString(input);
+    }
 
     /**
      * Checks to see if the input string is a compliant iama-token
