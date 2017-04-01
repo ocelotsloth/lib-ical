@@ -47,5 +47,43 @@ import Parameter from "./Parameter";
  * @author David Haynes <dhaynes3@gmu.edu>
  */
 export default class DelegateesParam extends Parameter {
+    private _delegatees: string[];
 
+    constructor(delegatees: string | string[]) {
+        super("DELEGATED-TO", []);
+
+        // Converts single string object to an array.
+        delegatees = (delegatees instanceof Array) ? delegatees : [delegatees];
+        this.delegatees = delegatees;
+    }
+
+    /**
+     * Simply returns the current delegatees, as a string array.
+     * 
+     * @since 0.1.0
+     * @author David Haynes <dhaynes3@gmu.edu>
+     */
+    get delegatees(): string[] {
+        return this._delegatees;
+    }
+
+    /**
+     * Sets the private _delegatees and also writes the "mailto:" to the
+     * front of each delegatee before writing super.paramValues
+     * 
+     * @since 0.1.0
+     * @author David Haynes <dhaynes3@gmu.edu>
+     */
+    set delegatees(newDelegatees: string[]) {
+        // Ensure each delegatee is valid QSafeChar String
+        if (!newDelegatees.every(Parameter.isQSafeChar))
+            throw new TypeError("Delegatee must be QSafeChars");
+
+        // Construct paramValues for generation
+        this.paramValues = newDelegatees.map(
+            delegatee => `"mailto:${delegatee}"`);
+
+        // Saves the given values for the getter funciton
+        this._delegatees = newDelegatees;
+    }
 }
