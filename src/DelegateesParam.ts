@@ -18,17 +18,31 @@
 import Parameter from "./Parameter";
 
 /**
- * DelegateesParam Class (Chapter x.x.x)
+ * DelegateesParam Class (Chapter 3.2.5)
  *
- * - Purpose: 
+ * - Purpose: To specify the calendar users to whom the calendar user
+ *   specified by the property has delegated participation.
  *
- * - Format Definition:
+ * - Format Definition: This property parameter is defined by the following
+ *   notation:
  *
+ *      - deltoparam = "DELEGATED-TO" "=" DQUOTE cal-address 
+ *                      DQUOTE *("," DQUOTE cal-address DQUOTE)
+ * 
  * - Description:
- *
+ *     - The parameter is specified on properties of the CAL-ADDRESS value
+ *       type.
+ *     - This parameter specifies those calendar users whom have been delegated
+ *       participation in a group-scheduled event or to-do by the calendar user
+ *       specified by the property.
+ *     - The individual calendar address parameter values MUST each be specified
+ *       in a quoted-string.
+ * 
  * - Example:
  *
- *
+ *     ATTENDEE;DELEGATED-TO="mailto:jdoe@example.com","mailto:
+ *      jqpublic@example.com":mailto:jsmith@example.com
+ * 
  * @since 0.1.0
  * @author David Haynes <dhaynes3@gmu.edu>
  */
