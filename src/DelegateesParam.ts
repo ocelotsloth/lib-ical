@@ -26,9 +26,9 @@ import Parameter from "./Parameter";
  * - Format Definition: This property parameter is defined by the following
  *   notation:
  *
- *      - deltoparam = "DELEGATED-TO" "=" DQUOTE cal-address 
+ *      - deltoparam = "DELEGATED-TO" "=" DQUOTE cal-address
  *                      DQUOTE *("," DQUOTE cal-address DQUOTE)
- * 
+ *
  * - Description:
  *     - The parameter is specified on properties of the CAL-ADDRESS value
  *       type.
@@ -37,12 +37,12 @@ import Parameter from "./Parameter";
  *       specified by the property.
  *     - The individual calendar address parameter values MUST each be specified
  *       in a quoted-string.
- * 
+ *
  * - Example:
  *
  *     ATTENDEE;DELEGATED-TO="mailto:jdoe@example.com","mailto:
  *      jqpublic@example.com":mailto:jsmith@example.com
- * 
+ *
  * @since 0.1.0
  * @author David Haynes <dhaynes3@gmu.edu>
  */
@@ -59,7 +59,7 @@ export default class DelegateesParam extends Parameter {
 
     /**
      * Simply returns the current delegatees, as a string array.
-     * 
+     *
      * @since 0.1.0
      * @author David Haynes <dhaynes3@gmu.edu>
      */
@@ -70,7 +70,7 @@ export default class DelegateesParam extends Parameter {
     /**
      * Sets the private _delegatees and also writes the "mailto:" to the
      * front of each delegatee before writing super.paramValues
-     * 
+     *
      * @since 0.1.0
      * @author David Haynes <dhaynes3@gmu.edu>
      */
@@ -87,3 +87,4 @@ export default class DelegateesParam extends Parameter {
         this._delegatees = newDelegatees;
     }
 }
+
