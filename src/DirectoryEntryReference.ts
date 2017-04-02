@@ -29,6 +29,13 @@ import Parameter from "./Parameter";
  *     - dirparam  = "DIR" "=" DQUOTE uri DQUOTE
  *
  * - Description:
+ *     - Can be specified on properties with a CAL-ADDRESS value type.
+ *         - TODO: enforce this
+ *     - Specifies a reference to the directory entry associated with the
+ *       calendar user specified by the property.
+ *     - The parameter value is a URI.
+ *         - TODO: enforce that the URI is valid
+ *     - The URI MUST be specified in a quoted-string.
  *
  * - Example:
  *
