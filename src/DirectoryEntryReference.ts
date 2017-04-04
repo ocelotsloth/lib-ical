@@ -16,6 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import Parameter from "./Parameter";
+import * as url from "url";
+const URL = url.URL;
 
 /**
  * DelegatorsParam Class (Chapter 3.2.4)
@@ -34,7 +36,7 @@ import Parameter from "./Parameter";
  *     - Specifies a reference to the directory entry associated with the
  *       calendar user specified by the property.
  *     - The parameter value is a URI.
- *         - TODO: enforce that the URI is valid
+ *         - DONE: enforce that the URI is valid
  *     - The URI MUST be specified in a quoted-string.
  *
  * - Example:
@@ -45,7 +47,57 @@ import Parameter from "./Parameter";
  * @since 0.1.0
  * @author Mark Stenglein <mark@stengle.in>
  */
-export default class DelegatorsParam extends Parameter {
+export default class DirectoryEntryReference extends Parameter {
+    /** @access private */
+    public _uri: url.URL;
 
+    /**
+     * Builds a new DirectoryEntryReference object.
+     *
+     * @author Mark Stenglein <mark@stengle.in>
+     * @since 0.1.0
+     * @param uri Valid URI String (throws no error on malformed, but still valid URI)
+     * @access public
+     */
+    constructor(uri: string) {
+        if (!uri) {
+            throw new TypeError("uri must be defined for DirectoryEntryReference");
+        }
+        else {
+            super("DIR", []);
+            this.uri = uri;
+            this.reqContentValue = true;
+        }
+    }
+
+    /**
+     * Returns the href form of the stored URI
+     *
+     * @author Mark Stenglein <mark@stengle.in>
+     * @since 0.1.0
+     * @returns String href of stored URI
+     * @access public
+     */
+    get uri(): string {
+        return this._uri.href;
+    }
+
+    /**
+     * Allows you to set the URI to ANY valid URI.
+     *
+     * - This method does NOT make any assumptions over what you meant to say,
+     *   if by happenstance your input string can be interpreted as a valid URI,
+     *   lib-ical will not complain.
+     *
+     * @author Mark Stenglein <mark@stengle.in>
+     * @since 0.1.0
+     * @param newUri string value of the new URI which is to be validated
+     * @returns void
+     * @access public
+     */
+    set uri(newUri: string) {
+        this._uri = new URL(newUri);
+        this.paramValues = [`"${this._uri}"`];
+    }
 }
 

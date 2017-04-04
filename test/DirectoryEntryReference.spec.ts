@@ -26,5 +26,67 @@ describe("DirectoryEntryReference:", () => {
     it("Should exist", () => {
         expect(DirectoryEntryReference).to.exist;
     });
+
+    describe("constructor:", () => {
+        it("should create an object", () => {
+            const param = new DirectoryEntryReference("ldap://valid.com:444");
+
+            expect(param).to.exist;
+        });
+
+        it("should complain on empty uri", () => {
+            expect(() => {
+                const param = new DirectoryEntryReference("");
+            }).to.throw("uri must be defined for DirectoryEntryReference");
+        });
+    });
+
+    describe("get/set methods:", () => {
+        describe("uri:", () => {
+            it("should properly set the URI and give the same return", () => {
+                const URI = "ldap://me@example.com:6666/0=ABC%20Industries,c=US???"
+                    + "(cn=Jim%20Dolittle)";
+                const param = new DirectoryEntryReference(URI);
+                param.uri = URI;
+
+                expect(param.uri).to.be.equal(URI);
+            });
+
+            describe("throw exception on invalid uri:", () => {
+                it("leading dash", () => {
+                    expect(() => {
+                        const URI = "-invalid://example.com:66/t/e/s/t";
+                        const param = new DirectoryEntryReference(URI);
+                    }).to.throw("Invalid URL");
+                });
+
+                it("space", () => {
+                    expect(() => {
+                        const URI = "in valid://example.com:66/t/e/s/t";
+                        const param = new DirectoryEntryReference(URI);
+                    }).to.throw("Invalid URL");
+                });
+
+            });
+        });
+    });
+
+    describe("generator:", () => {
+        it("generates properly", () => {
+            const URI = "ldap://example.com:6666/o=ABC%20Industries,c=US???"
+                + "(cn=Jim%20Dolittle)";
+            const param = new DirectoryEntryReference(URI);
+
+            expect(param.generate()).to.equal(`DIR="${URI}"`);
+        });
+
+        it("escapes spaces and other special chars", () => {
+            const URI = "http://example.com/test/with/a space/inside";
+            const param = new DirectoryEntryReference(URI);
+
+            const expectedURI = "http://example.com/test/with/a%20space/inside";
+            expect(param.generate()).to.equal(`DIR="${expectedURI}"`);
+        });
+    });
 });
 
