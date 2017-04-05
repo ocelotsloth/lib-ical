@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import ContentLine from "../src/ContentLine";
-import Parameter from "../src/Parameter";
+import Parameter from "../src/Parameter/Parameter";
 import { expect } from "chai";
 import "mocha";
 

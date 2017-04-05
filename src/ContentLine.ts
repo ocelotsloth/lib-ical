@@ -17,7 +17,7 @@
  */
 import { isAlpha } from "./util";
 import { ICalElement } from "./ICalElement";
-import Parameter from "./Parameter";
+import Parameter from "./Parameter/Parameter";
 const CRLF: string = "\r\n";
 
 /**

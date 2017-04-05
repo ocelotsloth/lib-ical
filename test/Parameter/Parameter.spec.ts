@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import Parameter from "../src/Parameter";
+import Parameter from "../../src/Parameter/Parameter";
 import { expect } from "chai";
 import "mocha";
 

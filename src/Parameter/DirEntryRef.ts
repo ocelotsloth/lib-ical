@@ -20,7 +20,7 @@ import * as url from "url";
 const URL = url.URL;
 
 /**
- * DelegatorsParam Class (Chapter 3.2.4)
+ * DirEntryRef Class (Chapter 3.2.4)
  *
  * - Purpose: To specify reference to a directory entry associated with the
  *   calendar user specified by the property.
@@ -47,7 +47,7 @@ const URL = url.URL;
  * @since 0.1.0
  * @author Mark Stenglein <mark@stengle.in>
  */
-export default class DirectoryEntryReference extends Parameter {
+export default class DirEntryRef extends Parameter {
     /** @access private */
     public _uri: url.URL;
 
