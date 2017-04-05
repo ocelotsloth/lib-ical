@@ -15,28 +15,28 @@
 * You should have received a copy of the GNU Affero General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-import DirectoryEntryReference from "../src/DirectoryEntryReference";
+import DirEntryRef from "../../src/Parameter/DirEntryRef";
 import { expect } from "chai";
 import "mocha";
 
 /**
- * Test the DelegatorsParam class.
+ * Test the DirEntryRef class.
  */
-describe("DirectoryEntryReference:", () => {
+describe("DirEntryRef:", () => {
     it("Should exist", () => {
-        expect(DirectoryEntryReference).to.exist;
+        expect(DirEntryRef).to.exist;
     });
 
     describe("constructor:", () => {
         it("should create an object", () => {
-            const param = new DirectoryEntryReference("ldap://valid.com:444");
+            const param = new DirEntryRef("ldap://valid.com:444");
 
             expect(param).to.exist;
         });
 
         it("should complain on empty uri", () => {
             expect(() => {
-                const param = new DirectoryEntryReference("");
+                const param = new DirEntryRef("");
             }).to.throw("uri must be defined for DirectoryEntryReference");
         });
     });
@@ -46,7 +46,7 @@ describe("DirectoryEntryReference:", () => {
             it("should properly set the URI and give the same return", () => {
                 const URI = "ldap://me@example.com:6666/0=ABC%20Industries,c=US???"
                     + "(cn=Jim%20Dolittle)";
-                const param = new DirectoryEntryReference(URI);
+                const param = new DirEntryRef(URI);
                 param.uri = URI;
 
                 expect(param.uri).to.be.equal(URI);
@@ -56,14 +56,14 @@ describe("DirectoryEntryReference:", () => {
                 it("leading dash", () => {
                     expect(() => {
                         const URI = "-invalid://example.com:66/t/e/s/t";
-                        const param = new DirectoryEntryReference(URI);
+                        const param = new DirEntryRef(URI);
                     }).to.throw("Invalid URL");
                 });
 
                 it("space", () => {
                     expect(() => {
                         const URI = "in valid://example.com:66/t/e/s/t";
-                        const param = new DirectoryEntryReference(URI);
+                        const param = new DirEntryRef(URI);
                     }).to.throw("Invalid URL");
                 });
 
@@ -75,14 +75,14 @@ describe("DirectoryEntryReference:", () => {
         it("generates properly", () => {
             const URI = "ldap://example.com:6666/o=ABC%20Industries,c=US???"
                 + "(cn=Jim%20Dolittle)";
-            const param = new DirectoryEntryReference(URI);
+            const param = new DirEntryRef(URI);
 
             expect(param.generate()).to.equal(`DIR="${URI}"`);
         });
 
         it("escapes spaces and other special chars", () => {
             const URI = "http://example.com/test/with/a space/inside";
-            const param = new DirectoryEntryReference(URI);
+            const param = new DirEntryRef(URI);
 
             const expectedURI = "http://example.com/test/with/a%20space/inside";
             expect(param.generate()).to.equal(`DIR="${expectedURI}"`);

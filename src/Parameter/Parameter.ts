@@ -15,8 +15,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import { isAlpha } from "./util";
-import { ICalElement } from "./ICalElement";
+import { isAlpha } from "../util";
+import { ICalElement } from "../ICalElement";
 
 /**
  * Implementation of a Content Line Parameter from RFC 5545
