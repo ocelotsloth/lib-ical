@@ -103,52 +103,12 @@ describe("FormatType:", () => {
 
     describe("Static Methods", () => {
         describe("isregName:", () => {
-            it("Passes Alpha", () => {
-                expect(FormatType.isRegName("AlPhA")).to.be.true;
-            });
 
-            it("Passes Digits", () => {
-                expect(FormatType.isRegName("0123456789")).to.be.true;
-            });
-
-            it("Passes !", () => {
-                expect(FormatType.isRegName("!")).to.be.true;
-            });
-
-            it("Passes #", () => {
-                expect(FormatType.isRegName("#")).to.be.true;
-            });
-
-            it("Passes $", () => {
-                expect(FormatType.isRegName("$")).to.be.true;
-            });
-
-            it("Passes &", () => {
-                expect(FormatType.isRegName("&")).to.be.true;
-            });
-
-            it("Passes .", () => {
-                expect(FormatType.isRegName(".")).to.be.true;
-            });
-
-            it("Passes +", () => {
-                expect(FormatType.isRegName("+")).to.be.true;
-            });
-
-            it("Passes -", () => {
-                expect(FormatType.isRegName("-")).to.be.true;
-            });
-
-            it("Passes ^", () => {
-                expect(FormatType.isRegName("^")).to.be.true;
-            });
-
-            it("Passes _", () => {
-                expect(FormatType.isRegName("_")).to.be.true;
-            });
-
-            it("Passes All types at once", () => {
-                expect(FormatType.isRegName("Aa0123456789!#$&.+-^_")).to.be.true;
+            ["AlPhA", "0123456789", "!", "#", "$", "&",
+             ".", "+", "-" , "^", "-", "Aa0123456789!#$&.+-^_"].forEach(testChar => {
+                it(`Passes ${testChar}`, () => {
+                    expect(FormatType.isRegName(testChar)).to.be.true;
+                });
             });
 
             it("Passes 127 Characters", () => {
@@ -159,10 +119,6 @@ describe("FormatType:", () => {
                 expect(FormatType.isRegName(testValue)).to.be.true;
             });
 
-            it("Fails 0 characters", () => {
-                expect(FormatType.isRegName("")).to.be.false;
-            });
-
             it("Fails 128 characters", () => {
                 const testValue: string = "CPbCdgIJzLgSrrZOKJDofOuIFhxgbnccXB"
                     + "pGrwPZcaQxDNLtHqWKopzsJaTAzCnOKHhlxQBOKkObQjcPHXalKBNn"
@@ -171,12 +127,10 @@ describe("FormatType:", () => {
                 expect(FormatType.isRegName(testValue)).to.be.false;
             });
 
-            it("Fails <", () => {
-                expect(FormatType.isRegName("<")).to.be.false;
-            });
-
-            it("Fails /", () => {
-                expect(FormatType.isRegName("/")).to.be.false;
+            ["", "<", "/"].forEach(testChar => {
+                it(`Passes ${testChar}`, () => {
+                    expect(FormatType.isRegName(testChar)).to.be.false;
+                });
             });
         });
     });
