@@ -21,10 +21,10 @@
   "author": "Mark Stenglein",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "@types/node": "^7.0.12",
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.39",
     "@types/moment-timezone": "^0.2.34",
+    "@types/node": "^7.0.12",
     "@types/sinon": "^2.1.1",
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
@@ -35,8 +35,7 @@
     "tslint": "^5.0.0",
     "typescript": "^2.1.6"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "nyc": {
     "include": [
       "src/*.ts",
